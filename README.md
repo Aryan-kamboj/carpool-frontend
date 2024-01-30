@@ -1,1 +1,1 @@
-# carpool-frontend
+We are using React icons package for icons -> https://react-icons.github.io/react-icons/ 
