@@ -2,9 +2,11 @@ import { useState } from "react";
 import { searchRidesApi } from '../services/auth/rideApis';
 import { useDispatch } from "react-redux";
 import { setSerchedRides } from "../store/slices/dataSlice";
+import { useNavigate } from "react-router-dom";
 
 export const SearchRide = () => {
     const dispatcher = useDispatch();
+    const navigator = useNavigate();
     const [searchData, setSearchData] = useState({
         from: '',
         to: '',

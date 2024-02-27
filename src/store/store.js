@@ -3,7 +3,7 @@ import dataSlice from "./slices/dataSlice";
 
 export const store = configureStore({
   reducer: {
-    searchRides: dataSlice,
+    dataSlice: dataSlice,
   },
 });
 

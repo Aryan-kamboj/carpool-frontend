@@ -11,7 +11,7 @@ export const MyRides = () => {
     },[]);
     console.log(data);
   return (
-    <div className='backdrop-blur flex-1 space-y-4'>   
+    <div className='backdrop-blur flex-1 pt-4 space-y-4'>   
         {data?.rides.map((ride,i)=>{
             return (<RideBar key={i} host={ride.host} description={ride.description}/>)
         })}
