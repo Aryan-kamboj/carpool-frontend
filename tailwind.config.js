@@ -21,6 +21,9 @@ export default {
           900: "#000814",
         },
       },
+      backgroundImage:{
+        "bg":"url('./src/assets/bg_1.jpg')"
+      }
     },
   },
   plugins: [],

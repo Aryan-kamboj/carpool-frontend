@@ -51,7 +51,7 @@ export const SignUpForm = ({switcher}) => {
       <button onClick={() => {
         // console.log("clicked");
         switcher(prev => !prev);
-      }} className="text-lg">LogIn ?
+      }} className="text-lg text-nowrap">LogIn ?
       </button>
     </div>
   )

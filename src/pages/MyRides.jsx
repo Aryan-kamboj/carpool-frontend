@@ -3,7 +3,7 @@ import { RideBar } from '../components/RideBar'
 
 export const MyRides = () => {
   return (
-    <div>   
+    <div className='backdrop-blur'>   
         <RideBar/>
     </div>
   )

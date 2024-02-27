@@ -1,42 +1,79 @@
 import React from 'react'
+import { IoIosMan } from "react-icons/io";
+import { PiStarFill,PiStarHalfFill,PiStar } from "react-icons/pi";
+import { FaAnglesRight } from "react-icons/fa6";
+import { IoPeople } from "react-icons/io5";
 const data = 
     {
-        "_id": "65de1c99d3ebbaa1d1a9a00c",
-        "host": {
-            "ratingStats": {
-                "totalRatings": 0,
-                "averageRating": null
+        _id: "65de1c99d3ebbaa1d1a9a00c",
+        host: {
+            ratingStats: {
+                totalRatings: 0,
+                averageRating: 4.3 
             },
-            "_id": "65ddbe21c53210eb952c3d1b",
-            "firstName": "Samarth",
-            "lastName": "Bagga",
-            "email": "samarthbagga@gmail.com",
-            "createdAt": "2024-02-27T10:49:05.861Z",
-            "updatedAt": "2024-02-27T10:49:05.861Z",
-            "__v": 0
+            _id: "65ddbe21c53210eb952c3d1b",
+            firstName: "Samarth",
+            lastName: "Bagga",
+            email: "samarthbagga@gmail.com",
+            createdAt: "2024-02-27T10:49:05.861Z",
+            updatedAt: "2024-02-27T10:49:05.861Z",
+            __v: 0
         },
-        "from": "delhi",
-        "to": "jaipur",
-        "capacity": 1,
-        "date": "2024-02-27",
-        "description": "stuff",
-        "requests": [],
-        "createdAt": "2024-02-27T17:32:09.998Z",
-        "updatedAt": "2024-02-27T17:32:09.998Z",
-        "__v": 0
+        from: "delhi",
+        to: "jaipur",
+        capacity: 1,
+        date: "2024-02-27",
+        description: "stuff",
+        requests: [],
+        createdAt: "2024-02-27T17:32:09.998Z",
+        updatedAt: "2024-02-27T17:32:09.998Z",
+        __v: 0
     }
+    const host = data.host;
+    const {averageRating,totalRatings} = host.ratingStats;
+    const description = data.description;
 export const RideBar = () => {
+    // console.log(host.ratingStats);
   return (
-    <div>
-        <div>
-
-        </div>  
-        <div>
-            <div>
-                Desc
+    <div className='flex justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)]  border-richblack-400 border mx-auto py-4 rounded-lg h-[15vh] '>
+        <div className='flex flex-col justify-between items-center w-[35%]'>
+            <div className='flex items-center space-x-4'>
+                <span>
+                    From : {data.from}
+                </span>
+                <FaAnglesRight/>
+                <span>
+                    To : {data.to}
+                </span>
             </div>
+            <div className='flex space-x-4'>
+                <span>
+                    On : {data.date}
+                </span>
+                <span className='space-x-1 flex items-center'>
+                    <IoPeople className='inline-block'/>
+                    <span>{data.capacity}</span>
+                </span>
+            </div>
+        </div>  
+        <div className='flex flex-col justify-between w-[65%]'>
             <div>
-                {firstName} {lastName}
+                {description}
+            </div>
+            <div className='flex items-center space-x-4'>
+
+                <div className='h-[3rem] w-[3rem] flex items-center justify-center  border-[1px] rounded-full'>{<IoIosMan className='inline-block text-4xl'/>}</div>
+                <span>{host.firstName} {host.lastName}</span>
+                <div className='flex items-center space-x-4'>
+                    <div className={`flex bg-clip-text text-yellow-400 relative text-transparent justify-evenly mx-0 space-x-2`}>
+                        {(averageRating>=1||(averageRating>0.5))?<PiStarFill/>:(averageRating<=0.5)&&(averageRating>0)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=2||(averageRating>1.5))?<PiStarFill/>:(averageRating<=1.5)&&(averageRating>1)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=3||(averageRating>2.5))?<PiStarFill/>:(averageRating<=2.5)&&(averageRating>2)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=4||(averageRating>3.5))?<PiStarFill/>:(averageRating<=3.5)&&(averageRating>3)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=5||(averageRating>4.5))?<PiStarFill/>:(averageRating<=4.5)&&(averageRating>4)?<PiStarHalfFill/>:<PiStar/>}
+                    </div>
+                    <span>({totalRatings})</span>
+                </div>
             </div>
         </div>      
     </div>
@@ -45,32 +82,32 @@ export const RideBar = () => {
 
 
 // {
-//     "success": true,
-//     "rides": [
+//     success: true,
+//     rides: [
 //         {
-//             "_id": "65de1c99d3ebbaa1d1a9a00c",
-//             "host": {
-//                 "ratingStats": {
-//                     "totalRatings": 0,
-//                     "averageRating": null
+//             _id: 65de1c99d3ebbaa1d1a9a00c,
+//             host: {
+//                 ratingStats: {
+//                     totalRatings: 0,
+//                     averageRating: null
 //                 },
-//                 "_id": "65ddbe21c53210eb952c3d1b",
-//                 "firstName": "Samarth",
-//                 "lastName": "Bagga",
-//                 "email": "samarthbagga@gmail.com",
-//                 "createdAt": "2024-02-27T10:49:05.861Z",
-//                 "updatedAt": "2024-02-27T10:49:05.861Z",
-//                 "__v": 0
+//                 _id: 65ddbe21c53210eb952c3d1b,
+//                 firstName: Samarth,
+//                 lastName: Bagga,
+//                 email: samarthbagga@gmail.com,
+//                 createdAt: 2024-02-27T10:49:05.861Z,
+//                 updatedAt: 2024-02-27T10:49:05.861Z,
+//                 __v: 0
 //             },
-//             "from": "delhi",
-//             "to": "jaipur",
-//             "capacity": 1,
-//             "date": "2024-02-27",
-//             "description": "stuff",
-//             "requests": [],
-//             "createdAt": "2024-02-27T17:32:09.998Z",
-//             "updatedAt": "2024-02-27T17:32:09.998Z",
-//             "__v": 0
+//             from: delhi,
+//             to: jaipur,
+//             capacity: 1,
+//             date: 2024-02-27,
+//             description: stuff,
+//             requests: [],
+//             createdAt: 2024-02-27T17:32:09.998Z,
+//             updatedAt: 2024-02-27T17:32:09.998Z,
+//             __v: 0
 //         }
 //     ]
 // }

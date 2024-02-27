@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createRideApi } from '../services/auth/rideApis';
 
 export const CreateRide = () => {
