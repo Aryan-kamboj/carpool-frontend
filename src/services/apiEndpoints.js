@@ -5,5 +5,10 @@ console.log(BASE_URL)
 export const loginEndpoint = {
     url:`${BASE_URL}/api/auth/login`,
     method:"POST",
+    withCredentials: true,
+}
+export const signUpEndpoints = {
+    url:`${BASE_URL}/api/auth/register`,
+    method:"POST",
     withCredentials:true,
 }

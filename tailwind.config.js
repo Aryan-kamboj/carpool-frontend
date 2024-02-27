@@ -7,6 +7,7 @@ export default {
   theme: {
     colors:{
       orange:"#ED8936",
+      // orange:"#faa763",
       grey:"#718096",
       richblack: {
         5: "#F1F2FF",

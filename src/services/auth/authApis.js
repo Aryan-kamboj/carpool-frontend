@@ -1,5 +1,6 @@
 import { apiConnector } from "../apiConnection"
-import { loginEndpoint } from "../apiEndpoints"
+import { loginEndpoint, signUpEndpoints } from "../apiEndpoints"
+import toast from "react-hot-toast";
 
 export const loginApi = async (email,password) =>{
     try {
@@ -11,16 +12,39 @@ export const loginApi = async (email,password) =>{
             url:loginEndpoint.url,
             method:loginEndpoint.method,
             bodyData,
-            withCredentials:loginEndpoint.withCredentials,
-            // method:"post",
-            // url:"http://localhost:4002/api/auth/login",
-            // bodyData:bodyData,
-            // creds:true,
+            withCredentials: true,
         }
         console.log(request)
+        toast.loading("Logging you in");
         const {data} = await apiConnector(request);
-        console.log(data)
+        toast.dismiss()
+        toast.success("Logged in successfudilly")
+        return data;
     } catch (error) {
-       console.error(error); 
+        toast.dismiss()
+        toast.error("Could not log you in")
+       console.error(error);
     }
+}
+export const signupApi = async (firstName,lastName,email,password)=>{
+    try {
+        const bodyData = {
+            firstName,lastName,email,password
+        }
+        const request = {
+            url:signUpEndpoints.url,
+            method:signUpEndpoints.method,
+            bodyData,
+            withCredentials:signUpEndpoints.withCredentials
+        }
+        toast.loading("Signing you up");
+        const {data} = await apiConnector(request);
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const testAuth = async ()=>{
+    const url = "https://carpool-backend-muj.onrender.com/api/auth/test-auth"
+    console.log(await apiConnector({url,method:"GET"}));
 }
