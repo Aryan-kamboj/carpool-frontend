@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -33,19 +34,15 @@ export const Navbar = () => {
           </button>
         </div>
 
-        {/* Navbar Links */}
-        <div
-          className={`${isMenuOpen ? 'block' : 'hidden'
-            } lg:flex lg:items-center`}
-        >
-          <Link to="/my-rides" className="block lg:inline-block p-2 mx-2">My Rides</Link>
-          <Link to="/search" className="block lg:inline-block p-2 mx-2">Search Rides</Link>
-          {/* <Link to="/create" className="block lg:inline-block p-2 mx-2">Create Ride</Link> */}
-          {/* <Link to="/ride-history" className="block lg:inline-block p-2 mx-2">Ride History</Link> */}
-          <Link to="/my-requests" className="block lg:inline-block p-2 mx-2">My Requests</Link>
-          {/* Add more links as needed */}
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:flex lg:items-center`} >
+          <Link to="/my-rides" className={`block lg:inline-block px-4 py-2 mx-2 rounded-lg ${location.pathname === "/my-rides" && "bg-white/50"}`}>My Rides</Link>
+          <Link to="/search" className={`block lg:inline-block px-4 py-2 mx-2 rounded-lg ${location.pathname === "/search" && "bg-white/50"}`}>Search Rides</Link>
+          <Link to="/my-requests" className={`block lg:inline-block px-4 py-2 mx-2 rounded-lg ${location.pathname === "/my-requests" && "bg-white/50"}`}>My Requests</Link>
         </div>
       </div>
     </nav>
   );
 };
+
+{/* <Link to="/create" className="block lg:inline-block p-2 mx-2">Create Ride</Link> */ }
+{/* <Link to="/ride-history" className="block lg:inline-block p-2 mx-2">Ride History</Link> */ }
