@@ -6,6 +6,7 @@ import {Dashboard} from "./pages/Dashboard.jsx";
 import { Navbar } from './components/Navbar.jsx';
 import { SearchRide } from './pages/SearchRide.jsx';
 import { useLocation } from 'react-router-dom';
+import { MyRides } from './pages/MyRides.jsx';
 
 function App() {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<LoginSignup/>}/>
             <Route path="/create" element={<CreateRide/>}/>
             <Route path="/search" element={<SearchRide/>}/>
+            <Route path='my-rides' element={<MyRides/>}/>
           </Route>
       </Routes>
     </div>

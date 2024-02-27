@@ -39,7 +39,7 @@ export const Navbar = () => {
             isMenuOpen ? 'block' : 'hidden'
           } lg:flex lg:items-center`}
         >
-          <Link to="/" className="text-white block lg:inline-block p-2 mx-2">My Rides</Link>
+          <Link to="/my-rides" className="text-white block lg:inline-block p-2 mx-2">My Rides</Link>
           <Link to="/search" className="text-white block lg:inline-block p-2 mx-2">Search Rides</Link>
           <Link to="/create" className="text-white block lg:inline-block p-2 mx-2">Create Ride</Link>
           <Link to="/" className="text-white block lg:inline-block p-2 mx-2">My Requests</Link>
