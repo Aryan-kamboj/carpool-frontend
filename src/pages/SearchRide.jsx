@@ -23,15 +23,15 @@ export const SearchRide = () => {
         e.preventDefault();
         const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
         
-        if (data && data.rides) {
-          setRideResults(data.rides);
-        } else {
-          setRideResults([]);
-        }
+        // if (data && data.rides) {
+        //   setRideResults(data.rides);
+        // } else {
+        //   setRideResults([]);
+        // }
       };
 
     return (
-        <div className="flex justify-center items-center max-h-screen h-[90vh]">
+        <div className="flex backdrop-blur flex-1 justify-center items-center max-h-screen h-[90vh]">
       <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
         <h2 className="text-2xl font-semibold mb-4">Search for a ride</h2>
 
@@ -88,7 +88,7 @@ export const SearchRide = () => {
             Search
           </button>
         </form>
-        {rideResults.length > 0 && (
+        {/* {rideResults.length > 0 && (
           <div className="mt-8">
             <h3 className="text-xl font-semibold mb-4">Search Results</h3>
             <ul>
@@ -101,7 +101,7 @@ export const SearchRide = () => {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
 
 
       </div>

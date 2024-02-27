@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RideBar } from '../components/RideBar'
 import { myRidesApi } from '../services/auth/rideApis';
 
 export const MyRides = () => {
-    let data = undefined;
+    const [data,setData] = useState(null);
     useEffect(()=>{
         (async()=>{
-            data = await myRidesApi();
-            console.log(data);
+            setData(await myRidesApi());
         })()
     },[]);
+    console.log(data);
   return (
     <div className='backdrop-blur flex-1 space-y-4'>   
-        {/* {data?data?.map((ride)=>{
-
-        })} */}
+        {data?.rides.map((ride,i)=>{
+            return (<RideBar key={i} host={ride.host} description={ride.description}/>)
+        })}
     </div>
   )
 }

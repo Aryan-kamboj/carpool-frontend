@@ -16,7 +16,7 @@ function App() {
     <div className='bg-bg h-screen w-screen flex flex-col'>
       {pathname !== '/login' && <Navbar/>}
       <Routes>
-            <Route index element={<Dashboard/>}/>
+            <Route index element={<SearchRide/>}/>
             <Route path="/login" element={<LoginSignup/>}/>
             <Route path="/create" element={<CreateRide/>}/>
             <Route path="/search" element={<SearchRide/>}/>

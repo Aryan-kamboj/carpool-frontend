@@ -29,12 +29,10 @@ const data =
         updatedAt: "2024-02-27T17:32:09.998Z",
         __v: 0
     }
-    const host = data.host;
-    const {averageRating,totalRatings} = host.ratingStats;
-    const description = data.description;
-export const RideBar = () => {
-    // console.log(host.ratingStats);
-  return (
+    export const RideBar = ({host,description}) => {
+        console.log(host,description)
+    const {averageRating,totalRatings} = host?.ratingStats;
+    return (
     <div className='flex justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[15vh] '>
         <div className='flex flex-col justify-between items-center w-[35%]'>
             <div className='flex items-center space-x-4'>
