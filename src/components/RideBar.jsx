@@ -35,20 +35,20 @@ const data =
 export const RideBar = () => {
     // console.log(host.ratingStats);
   return (
-    <div className='flex justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)]  border-richblack-400 border mx-auto py-4 rounded-lg h-[15vh] '>
+    <div className='flex justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[15vh] '>
         <div className='flex flex-col justify-between items-center w-[35%]'>
             <div className='flex items-center space-x-4'>
                 <span>
-                    From : {data.from}
+                    From : <span className='font-bold'>{data.from}</span>
                 </span>
                 <FaAnglesRight/>
                 <span>
-                    To : {data.to}
+                    To : <span className='font-bold'>{data.to}</span>
                 </span>
             </div>
             <div className='flex space-x-4'>
                 <span>
-                    On : {data.date}
+                    On : <span className='font-bold'>{data.date}</span>
                 </span>
                 <span className='space-x-1 flex items-center'>
                     <IoPeople className='inline-block'/>
@@ -57,7 +57,7 @@ export const RideBar = () => {
             </div>
         </div>  
         <div className='flex flex-col justify-between w-[65%]'>
-            <div>
+            <div className='text-richblack-600'>
                 {description}
             </div>
             <div className='flex items-center space-x-4'>

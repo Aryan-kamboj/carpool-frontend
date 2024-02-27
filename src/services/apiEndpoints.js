@@ -27,3 +27,8 @@ export const getRideRequestsEndpoints = {
     method: "GET",
     withCredentials: true
 }
+export const myRidesEndpoint = {
+    url: `${BASE_URL}/api/rides/user-created`,
+    method: "GET",
+    withCredentials: true    
+}
