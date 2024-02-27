@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
@@ -11,13 +11,13 @@ export const Navbar = () => {
   return (
     <nav className="bg-transparent p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-2xl font-bold">My Profile</div>
+        <div className="text-2xl font-bold">My Profile</div>
 
         {/* Hamburger Menu Button for smaller devices */}
         <div className="lg:hidden">
           <button
             onClick={toggleMenu}
-            className="text-white focus:outline-none"
+            className="focus:outline-none"
           >
             <svg
               className="h-6 w-6"
@@ -35,14 +35,13 @@ export const Navbar = () => {
 
         {/* Navbar Links */}
         <div
-          className={`${
-            isMenuOpen ? 'block' : 'hidden'
-          } lg:flex lg:items-center`}
+          className={`${isMenuOpen ? 'block' : 'hidden'
+            } lg:flex lg:items-center`}
         >
-          <Link to="/my-rides" className="text-white block lg:inline-block p-2 mx-2">My Rides</Link>
-          <Link to="/search" className="text-white block lg:inline-block p-2 mx-2">Search Rides</Link>
-          <Link to="/create" className="text-white block lg:inline-block p-2 mx-2">Create Ride</Link>
-          <Link to="/" className="text-white block lg:inline-block p-2 mx-2">My Requests</Link>
+          <Link to="/my-rides" className="block lg:inline-block p-2 mx-2">My Rides</Link>
+          <Link to="/search" className="block lg:inline-block p-2 mx-2">Search Rides</Link>
+          <Link to="/create" className="block lg:inline-block p-2 mx-2">Create Ride</Link>
+          <Link to="/" className="block lg:inline-block p-2 mx-2">My Requests</Link>
           {/* Add more links as needed */}
         </div>
       </div>

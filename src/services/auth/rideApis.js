@@ -59,11 +59,11 @@ export async function rideRequestsApi() {
         };
         toast.loading("Fetching user ride requests");
         const { data } = await apiConnector(request);
+        toast.dismiss();
         return data;
     } catch (err) {
+        toast.dismiss();
         toast.error("Could not fetch user ride requests");
         console.error(err);
-    } finally {
-        toast.dismiss();
-    }
+    } 
 }

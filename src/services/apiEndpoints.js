@@ -23,7 +23,7 @@ export const searchRideEndpoints = {
     withCredentials:true,
 }
 export const getRideRequestsEndpoints = {
-    url: `${BASE_URL}/api/auth/user-requests`,
+    url: `${BASE_URL}/api/rides/user-requests`,
     method: "GET",
     withCredentials: true
 }
