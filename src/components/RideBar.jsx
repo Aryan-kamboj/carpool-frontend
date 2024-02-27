@@ -33,7 +33,7 @@ const data =
         console.log(host,description)
     const {averageRating,totalRatings} = host?.ratingStats;
     return (
-    <div className='flex justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[15vh] '>
+    <div className='flex flex-1 justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[15vh] '>
         <div className='flex flex-col justify-between items-center w-[35%]'>
             <div className='flex items-center space-x-4'>
                 <span>
