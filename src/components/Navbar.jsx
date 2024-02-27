@@ -9,7 +9,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-transparent p-4">
+    <nav className="backdrop-blur-3xl bg-white/50 p-3">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold">My Profile</div>
 
@@ -41,7 +41,7 @@ export const Navbar = () => {
           <Link to="/my-rides" className="block lg:inline-block p-2 mx-2">My Rides</Link>
           <Link to="/search" className="block lg:inline-block p-2 mx-2">Search Rides</Link>
           <Link to="/create" className="block lg:inline-block p-2 mx-2">Create Ride</Link>
-          <Link to="/" className="block lg:inline-block p-2 mx-2">My Requests</Link>
+          <Link to="/my-requests" className="block lg:inline-block p-2 mx-2">My Requests</Link>
           {/* Add more links as needed */}
         </div>
       </div>

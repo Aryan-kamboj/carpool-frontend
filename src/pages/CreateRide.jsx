@@ -24,7 +24,7 @@ export const CreateRide = () => {
   };
 
   return (
-    <div className="flex justify-center items-center flex-1 backdrop-blur">
+    <div className="flex justify-center items-center flex-1 backdrop-blur overflow-auto p-4">
       <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
         <h2 className="text-2xl font-semibold mb-4">Add a Ride</h2>
 
