@@ -8,25 +8,26 @@ const colorMap = {
   "rejected": "bg-red-400"
 }
 
-async function handleCancelDelete(requestId) {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
-  const request = await fetch(`${BASE_URL}/api/rides/cancel`, {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ requestId })
-  })
-  const res = await request.json();
-  console.log(res);
-}
-
 function RequestItem({ setUserRideRequests, request }) {
   async function getRideRequests() {
     const data = await rideRequestsApi()
     console.log(data);
     setUserRideRequests(data.requests);
+  }
+
+  async function handleCancelDelete(requestId) {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    const request = await fetch(`${BASE_URL}/api/rides/cancel`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ requestId })
+    })
+    const res = await request.json();
+
+    await getRideRequests()
   }
 
   return (
