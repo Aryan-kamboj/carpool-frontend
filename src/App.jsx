@@ -1,5 +1,4 @@
-import './App.css'
-import { Outlet, Routes,Route } from 'react-router-dom'
+import {  Routes,Route } from 'react-router-dom'
 import { LoginSignup } from './pages/LoginSignup'
 import { CreateRide } from './pages/CreateRide.jsx';
 import {Dashboard} from "./pages/Dashboard.jsx";
@@ -14,17 +13,15 @@ function App() {
   const {pathname} = location;
   return (
     // <div className='bg-bg min-h-[100vh] h-screen'>
-    <div className='bg-bg h-screen flex flex-col backdrop-blur'>
+    <div className='bg-bg h-screen w-screen flex flex-col backdrop-blur'>
       {pathname !== '/login' && <Navbar/>}
       <Routes>
-          <Route path="/" element={<div><Outlet/></div>}>
             <Route index element={<Dashboard/>}/>
             <Route path="/login" element={<LoginSignup/>}/>
             <Route path="/create" element={<CreateRide/>}/>
             <Route path="/search" element={<SearchRide/>}/>
             <Route path='my-rides' element={<MyRides/>}/>
             <Route path="/my-requests" element={<MyRequests />}/>
-          </Route>
       </Routes>
     </div>
   )
