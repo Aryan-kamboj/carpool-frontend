@@ -4,12 +4,14 @@ import { LoginSignup } from './pages/LoginSignup'
 import { CreateRide } from './pages/CreateRide.jsx';
 import {Dashboard} from "./pages/Dashboard.jsx";
 import { Navbar } from './components/Navbar.jsx';
+import { useLocation } from 'react-router-dom';
 
 function App() {
-
+  const location = useLocation();
+  const {pathname} = location;
   return (
     <div className=''>
-      <Navbar/>
+      {pathname !== '/login' && <Navbar/>}
       <Routes>
           <Route path="/" element={<div><Outlet/></div>}>
             <Route index element={<Dashboard/>}/>

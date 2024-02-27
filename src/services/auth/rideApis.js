@@ -2,10 +2,10 @@ import { apiConnector } from "../apiConnection"
 import { createRideEndpoints } from "../apiEndpoints"
 import toast from "react-hot-toast";
 
-export const createRideApi = async (from, to, capacity, date, desc) => {
+export const createRideApi = async (from, to, capacity, date, description) => {
     try {
         const bodyData={
-            from, to, capacity, date, desc
+            from, to, capacity, date, description
         }
         const request = {
             url:createRideEndpoints.url,

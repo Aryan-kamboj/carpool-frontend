@@ -12,8 +12,6 @@ export const Navbar = () => {
     <nav className="bg-transparent p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-2xl font-bold">My Profile</div>
-
-        {/* Hamburger Menu Button for smaller devices */}
         <div className="lg:hidden">
           <button
             onClick={toggleMenu}
