@@ -38,7 +38,7 @@ export const Navbar = () => {
           } lg:flex lg:items-center`}
         >
           <Link to="/" className="text-white p-2 mx-2">My Rides</Link>
-          <Link to="/" className="text-white p-2 mx-2">Search Rides</Link>
+          <Link to="/search" className="text-white p-2 mx-2">Search Rides</Link>
           <Link to="/create" className="text-white p-2 mx-2">Create Ride</Link>
           <Link to="/" className="text-white p-2 mx-2">My Requests</Link>
           {/* Add more links as needed */}

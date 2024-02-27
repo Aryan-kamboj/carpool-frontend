@@ -17,3 +17,8 @@ export const createRideEndpoints = {
     method:"POST",
     withCredentials:true,
 }
+export const searchRideEndpoints = {
+    url: `${BASE_URL}/api/rides/search`,
+    method:"POST",
+    withCredentials:true,
+}

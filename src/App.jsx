@@ -4,6 +4,7 @@ import { LoginSignup } from './pages/LoginSignup'
 import { CreateRide } from './pages/CreateRide.jsx';
 import {Dashboard} from "./pages/Dashboard.jsx";
 import { Navbar } from './components/Navbar.jsx';
+import { SearchRide } from './pages/SearchRide.jsx';
 import { useLocation } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Dashboard/>}/>
             <Route path="/login" element={<LoginSignup/>}/>
             <Route path="/create" element={<CreateRide/>}/>
+            <Route path="/search" element={<SearchRide/>}/>
           </Route>
       </Routes>
     </div>
