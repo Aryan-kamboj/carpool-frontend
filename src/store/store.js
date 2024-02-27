@@ -6,3 +6,5 @@ export const store = configureStore({
     searchRides: dataSlice,
   },
 });
+
+export default store;
