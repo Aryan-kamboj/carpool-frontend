@@ -7,6 +7,7 @@ import { SearchRide } from './pages/SearchRide.jsx';
 import { useLocation } from 'react-router-dom';
 import { MyRides } from './pages/MyRides.jsx';
 import MyRequests from './pages/MyRequests.jsx';
+import { RideDetails } from './pages/RideDetails.jsx';
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
             <Route path="/login" element={<LoginSignup/>}/>
             <Route path="/create" element={<CreateRide/>}/>
             <Route path="/search" element={<SearchRide/>}/>
+            <Route path='/ride-details' element={<RideDetails/>}/>
             <Route path='my-rides' element={<MyRides/>}/>
             <Route path="/my-requests" element={<MyRequests />}/>
       </Routes>

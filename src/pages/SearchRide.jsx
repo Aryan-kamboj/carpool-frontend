@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { searchRidesApi } from '../services/auth/rideApis';
-
+import { useDispatch } from "react-redux";
+import { setSerchedRides } from "../store/slices/dataSlice";
 
 export const SearchRide = () => {
+    const dispatcher = useDispatch();
     const [searchData, setSearchData] = useState({
         from: '',
         to: '',
@@ -22,7 +24,8 @@ export const SearchRide = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
-        
+        dispatcher(setSerchedRides(data.rides));
+        navigator("/ride-details")
         // if (data && data.rides) {
         //   setRideResults(data.rides);
         // } else {
