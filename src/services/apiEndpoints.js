@@ -22,3 +22,8 @@ export const searchRideEndpoints = {
     method:"POST",
     withCredentials:true,
 }
+export const getRideRequestsEndpoints = {
+    url: `${BASE_URL}/api/auth/user-requests`,
+    method: "GET",
+    withCredentials: true
+}

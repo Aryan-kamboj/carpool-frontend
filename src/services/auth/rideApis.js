@@ -1,5 +1,5 @@
 import { apiConnector } from "../apiConnection"
-import { createRideEndpoints, searchRideEndpoints } from "../apiEndpoints"
+import {createRideEndpoints, getRideRequestsEndpoints, searchRideEndpoints} from "../apiEndpoints"
 import toast from "react-hot-toast";
 
 export const createRideApi = async (from, to, capacity, date, description) => {
@@ -48,5 +48,22 @@ export const searchRidesApi = async (from, to, date) => {
         toast.dismiss()
         toast.error("Could not get rides")
        console.error(error);
+    }
+}
+export async function rideRequestsApi() {
+    try {
+        const request = {
+            url: getRideRequestsEndpoints.url,
+            method: getRideRequestsEndpoints.method,
+            withCredentials: getRideRequestsEndpoints.withCredentials
+        };
+        toast.loading("Fetching user ride requests");
+        const { data } = await apiConnector(request);
+        return data;
+    } catch (err) {
+        toast.error("Could not fetch user ride requests");
+        console.error(err);
+    } finally {
+        toast.dismiss();
     }
 }
