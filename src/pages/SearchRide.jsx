@@ -8,6 +8,8 @@ export const SearchRide = () => {
         to: '',
         date: '',
       });
+    
+      const [rideResults, setRideResults] = useState([]);
 
       const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,6 +22,12 @@ export const SearchRide = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
+        
+        if (data && data.rides) {
+          setRideResults(data.rides);
+        } else {
+          setRideResults([]);
+        }
       };
 
     return (
@@ -80,6 +88,22 @@ export const SearchRide = () => {
             Search
           </button>
         </form>
+        {rideResults.length > 0 && (
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold mb-4">Search Results</h3>
+            <ul>
+              {rideResults.map((ride, index) => (
+                <li key={index} className="mb-2"> 
+                  <p>{ride.from}</p>
+                  <p>{ride.to}</p>
+                  <p>{ride.date}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+
       </div>
     </div>
     )
