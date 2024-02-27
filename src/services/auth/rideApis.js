@@ -3,6 +3,7 @@ import {
   createRideEndpoints,
   getRideRequestsEndpoints,
   myRidesEndpoint,
+  reqToJoinEndpoint,
   searchRideEndpoints,
 } from "../apiEndpoints";
 import toast from "react-hot-toast";
@@ -95,3 +96,24 @@ export const myRidesApi = async () => {
     console.log(error);
   }
 };
+export const reqToJoinApi = async (id)=>{
+  try {
+    const bodyData = {
+      rideId:id
+    }
+    const request = {
+      url:reqToJoinEndpoint.url,
+      method:reqToJoinEndpoint.method,
+      withCredentials:reqToJoinEndpoint.withCredentials,
+      bodyData
+    }
+    toast.loading("Sending your request to host");
+    await apiConnector(request);
+    toast.dismiss();
+    toast.success("Request sent to host");
+  } catch (error) {
+    toast.dismiss();
+    toast.error("Could not send your request");
+    console.log(error)
+  }
+}
