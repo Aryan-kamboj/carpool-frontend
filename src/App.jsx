@@ -13,7 +13,8 @@ function App() {
   const location = useLocation();
   const {pathname} = location;
   return (
-    <div className='bg-bg min-h-[100vh]'>
+    // <div className='bg-bg min-h-[100vh] h-screen'>
+    <div className='bg-bg h-screen flex flex-col backdrop-blur'>
       {pathname !== '/login' && <Navbar/>}
       <Routes>
           <Route path="/" element={<div><Outlet/></div>}>
