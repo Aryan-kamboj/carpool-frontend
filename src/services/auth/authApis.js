@@ -19,6 +19,7 @@ export const loginApi = async (email,password) =>{
         const {data} = await apiConnector(request);
         toast.dismiss()
         toast.success("Logged in successfudilly")
+        console.log(data);
         return data;
     } catch (error) {
         toast.dismiss()

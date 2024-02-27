@@ -12,3 +12,8 @@ export const signUpEndpoints = {
     method:"POST",
     withCredentials:true,
 }
+export const createRideEndpoints = {
+    url:`${BASE_URL}/api/rides/create`,
+    method:"POST",
+    withCredentials:true,
+}
