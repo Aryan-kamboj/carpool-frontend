@@ -13,7 +13,7 @@ function App() {
   const {pathname} = location;
   return (
     // <div className='bg-bg min-h-[100vh] h-screen'>
-    <div className='bg-bg h-screen w-screen flex flex-col backdrop-blur'>
+    <div className='bg-bg h-screen w-screen flex flex-col'>
       {pathname !== '/login' && <Navbar/>}
       <Routes>
             <Route index element={<Dashboard/>}/>

@@ -9,7 +9,7 @@ const colorMap = {
 
 function RequestItem({ request }) {
   return (
-    <div className={`w-full flex justify-between bg-stone-100 py-3 px-4 rounded-lg`}>
+    <div className={`w-full flex justify-between py-3 px-4 rounded-lg backdrop-blur bg-white/50`}>
       <div className="flex gap-1 items-center">
         <div className="font-bold">{request?.ride.from}</div>
         <p>to</p>
@@ -18,7 +18,7 @@ function RequestItem({ request }) {
       <div className="flex items-center">
         <div>{request?.ride.host.firstName}</div>
       </div>
-      <div className={`px-4 py-2 rounded-md ${colorMap[request.status]}`}>{request.status}</div>
+      <div className={`px-4 py-2 text-sm rounded-md ${colorMap[request.status]}`}>{request.status}</div>
     </div>
   )
 }
@@ -37,7 +37,7 @@ export default function MyRequests() {
   }, []);
 
   return (
-    <div className={"w-screen flex-1 p-4 sm:p-8 xl:p-10"}>
+    <div className={"w-screen flex-1 p-4 sm:p-8 xl:p-10 backdrop-blur-sm"}>
       <div className="flex flex-col gap-4 w-full sm:max-w-[90%] xl:max-w-[60%] mx-auto">
         {userRideRequests?.length > 0 && userRideRequests.map(function (userRequest) {
           return <RequestItem key={userRequest._id} request={userRequest} />
