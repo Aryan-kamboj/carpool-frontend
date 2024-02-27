@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { rideRequestsApi } from "../services/auth/rideApis.js";
+import { MdCancel } from "react-icons/md";
 
 const colorMap = {
   "pending": "bg-yellow-400",
@@ -18,7 +19,15 @@ function RequestItem({ request }) {
       <div className="flex items-center">
         <div>{request?.ride.host.firstName}</div>
       </div>
-      <div className={`px-4 py-2 text-sm rounded-md ${colorMap[request.status]}`}>{request.status}</div>
+      <div className="flex gap-2">
+        <button className="bg-red-500 text-white px-4 py-2 rounded-md transition-all duration-300 active:scale-95 flex items-center gap-1">
+          <div className="hidden sm:flex">
+            <MdCancel />
+          </div>
+          <p className="text-sm">Cancel</p>
+        </button>
+        <div className={`px-4 py-2 text-sm rounded-md ${colorMap[request.status]}`}>{request.status}</div>
+      </div>
     </div>
   )
 }
