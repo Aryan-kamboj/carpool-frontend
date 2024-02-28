@@ -5,9 +5,13 @@ import { useEffect, useState } from "react";
 import { IoIosMan } from "react-icons/io";
 import { FaAnglesRight } from "react-icons/fa6";
 import { IoPeople } from "react-icons/io5";
+import { RequestBar } from "../components/RequestBar";
+import { EditRideCard } from "../components/EditRideCard";
+import { RideDetailsCard } from "../components/RideDetailsCard";
 export const HostRide = () => {
     const {id} = useParams();
     const [ride,setRide] = useState(null);
+    const [editActive,setEdit] = useState(false);
     console.log(id);
     useEffect(()=>{
         (async()=>{
@@ -18,39 +22,16 @@ export const HostRide = () => {
     // const {averageRating,totalRatings} = ride?.host?.ratingStats;
     return (<div className="w-screen flex-1 backdrop-blur pt-5">
                 <div className="w-[90%] backdrop-blur mx-auto overflow-hidden rounded-3xl border-[1px] border-white">
-                    {ride && <div className='flex flex-col space-y-4 justify-between p-8 bg-[rgba(255,255,255,0.4)]  '>
+            {ride && <div className="flex bg-[rgba(255,255,255,0.4)] ">
+                        {editActive?<EditRideCard setEdit={setEdit} ride={ride}/>:<RideDetailsCard setEdit={setEdit} ride={ride}/>}
                         <div>
-                            From : <span className='font-bold'>{ride?.from}</span>
+                            {ride?.requests.map((request)=>{
+                                return (<RequestBar request={request}/>)
+                            })}
                         </div>
-                        <div>
-                            To : <span className='font-bold'>{ride?.to}</span>
-                        </div>
-                        <div>
-                            Date : <span className='font-bold'>{ride?.date}</span>
-                        </div>
-                        <div className=''>
-                        Total number of passengers : <span className="font-bold">{ride?.capacity}</span>
-                        </div>
-            <div className='text-richblack-600'>
-                {ride?.description}
-            </div>
-            <div className='flex items-center space-x-4'>
-                <div className='h-[3rem] w-[3rem] flex items-center justify-center  border-[1px] rounded-full'>{<IoIosMan className='inline-block text-4xl'/>}</div>
-                <span>{ride?.host.firstName} {ride?.host.lastName}</span>
-                {/* <div className='flex items-center space-x-4'>
-                    <div className={`flex bg-clip-text text-[#e49100] relative text-transparent justify-evenly mx-0 space-x-2`}>
-                        {(averageRating>=1||(averageRating>0.5))?<PiStarFill/>:(averageRating<=0.5)&&(averageRating>0)?<PiStarHalfFill/>:<PiStar/>}
-                        {(averageRating>=2||(averageRating>1.5))?<PiStarFill/>:(averageRating<=1.5)&&(averageRating>1)?<PiStarHalfFill/>:<PiStar/>}
-                        {(averageRating>=3||(averageRating>2.5))?<PiStarFill/>:(averageRating<=2.5)&&(averageRating>2)?<PiStarHalfFill/>:<PiStar/>}
-                        {(averageRating>=4||(averageRating>3.5))?<PiStarFill/>:(averageRating<=3.5)&&(averageRating>3)?<PiStarHalfFill/>:<PiStar/>}
-                        {(averageRating>=5||(averageRating>4.5))?<PiStarFill/>:(averageRating<=4.5)&&(averageRating>4)?<PiStarHalfFill/>:<PiStar/>}
-                    </div>
-                    <span>({totalRatings})</span>
-                </div> */}
+                    </div>}
                 </div>
-            </div>}
-            </div>
-            </div>)
+        </div>)
 }
 
 // {
