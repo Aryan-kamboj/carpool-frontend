@@ -27,7 +27,7 @@ export const MyRides = () => {
         {data?.map((ride,i)=>{
             console.log(ride);
             return (<div  key={i} onClick={()=>{handleClick(ride?._id)}}>
-                <RideBar host={ride.host} description={ride.description}/>
+                <RideBar data={ride}/>
             </div>)
         })}
     </div>

@@ -5,6 +5,7 @@ import {
   myRidesEndpoint,
   reqToJoinEndpoint,
   searchRideEndpoints,
+  getRideDetailsEndpoint,
 } from "../apiEndpoints";
 import toast from "react-hot-toast";
 
@@ -114,6 +115,29 @@ export const reqToJoinApi = async (id)=>{
   } catch (error) {
     toast.dismiss();
     toast.error("Could not send your request");
+    console.log(error)
+  }
+}
+export const getRideDetails = async (id)=>{
+  try {
+    const bodyData = {
+      id
+    }
+    const request = {
+      url:`${getRideDetailsEndpoint.url}`,
+      method:getRideDetailsEndpoint.method,
+      withCredentials:getRideDetailsEndpoint.withCredentials,
+      bodyData,
+    }
+    toast.loading("Fetching ride detail");
+    const {data} = await apiConnector(request);
+    console.log(data)
+    toast.dismiss();
+    toast.success("Ride details fetched");
+    return data;
+  } catch (error) {
+    toast.dismiss();
+    toast.error("Could not get ride details");
     console.log(error)
   }
 }

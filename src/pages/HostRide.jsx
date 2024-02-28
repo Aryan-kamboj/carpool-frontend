@@ -1,48 +1,100 @@
 import {  useParams } from "react-router-dom"
-import { useSelector } from "react-redux";
+import { PiStarFill,PiStarHalfFill,PiStar } from "react-icons/pi";
+import { getRideDetails } from "../services/auth/rideApis";
+import { useEffect, useState } from "react";
+import { IoIosMan } from "react-icons/io";
+import { FaAnglesRight } from "react-icons/fa6";
+import { IoPeople } from "react-icons/io5";
 export const HostRide = () => {
-    // console.log("HIIII")
-    // const id = document.location.pathname.split('/')[2];
-    const data = useSelector((store)=>{
-        console.log(store?.dataSlice?.myRides);
-        return store?.dataSlice?.myRides;
-    })
-    console.log(data);
-    // const rideData = data?.filter((item)=>{
-    //     console.log(item)
-    // })
-    const {id} = useParams()
+    const {id} = useParams();
+    const [ride,setRide] = useState(null);
     console.log(id);
-    return (<div className="w-screen flex-1 backdrop-blur">
-        <div className="">
-            
-        </div>
-    </div>)
+    useEffect(()=>{
+        (async()=>{
+            setRide(await getRideDetails(id).then((value)=>value.rideDetails));
+        })()
+    },[id])
+    console.log(ride);
+    // const {averageRating,totalRatings} = ride?.host?.ratingStats;
+    return (<div className="w-screen flex-1 backdrop-blur pt-5">
+                <div className="w-[90%] backdrop-blur mx-auto rounded-3xl border-[1px] border-white">
+                    {ride && <div className='flex flex-col justify-between items-center '>
+                    <div className='flex items-center space-x-4'>
+                        <span>
+                            From : <span className='font-bold'>{ride?.from}</span>
+                        </span>
+                        <FaAnglesRight/>
+                        <span>
+                            To : <span className='font-bold'>{ride?.to}</span>
+                        </span>
+                    </div>
+                    <div className='flex space-x-4'>
+                        <span>
+                            On : <span className='font-bold'>{ride?.date}</span>
+                        </span>
+                        <span className='space-x-1 flex items-center'>
+                            <IoPeople className='inline-block'/>
+                            <span>{ride?.capacity}</span>
+                        </span>
+                    </div>
+                <div className='flex flex-col items-center justify-between '>
+            <div className='text-richblack-600'>
+                {ride?.description}
+            </div>
+            <div className='flex items-center space-x-4'>
+                <div className='h-[3rem] w-[3rem] flex items-center justify-center  border-[1px] rounded-full'>{<IoIosMan className='inline-block text-4xl'/>}</div>
+                <span>{ride?.host.firstName} {ride?.host.lastName}</span>
+                {/* <div className='flex items-center space-x-4'>
+                    <div className={`flex bg-clip-text text-[#e49100] relative text-transparent justify-evenly mx-0 space-x-2`}>
+                        {(averageRating>=1||(averageRating>0.5))?<PiStarFill/>:(averageRating<=0.5)&&(averageRating>0)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=2||(averageRating>1.5))?<PiStarFill/>:(averageRating<=1.5)&&(averageRating>1)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=3||(averageRating>2.5))?<PiStarFill/>:(averageRating<=2.5)&&(averageRating>2)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=4||(averageRating>3.5))?<PiStarFill/>:(averageRating<=3.5)&&(averageRating>3)?<PiStarHalfFill/>:<PiStar/>}
+                        {(averageRating>=5||(averageRating>4.5))?<PiStarFill/>:(averageRating<=4.5)&&(averageRating>4)?<PiStarHalfFill/>:<PiStar/>}
+                    </div>
+                    <span>({totalRatings})</span>
+                </div> */}
+                </div>
+            </div>
+            </div>}
+            </div>
+            </div>)
 }
 
-
 // {
-//     "_id": "65de561bf19d55df45b516fd",
-//     "host": {
-//         "ratingStats": {
-//             "totalRatings": 0,
-//             "averageRating": null
-//         },
-//         "_id": "65dc7de2bc7bf6161a7f8a29",
-//         "firstName": "test",
-//         "lastName": "test",
-//         "email": "test@test.com",
-//         "createdAt": "2024-02-26T12:02:42.534Z",
-//         "updatedAt": "2024-02-26T12:02:42.534Z",
-//         "__v": 0
-//     },
-//     "from": "muj",
-//     "to": "delhi",
-//     "capacity": 3,
-//     "date": "2024-02-29",
-//     "description": "this is a test description i am writing some random things in this please ignore",
-//     "requests": [],
-//     "createdAt": "2024-02-27T21:37:31.606Z",
-//     "updatedAt": "2024-02-27T21:37:31.606Z",
-//     "__v": 0
+//     "_id": "65df19b4cbf70ed1d138a9ea",
+//     "host": "65df192ccbf70ed1d138a9e6",
+//     "from": "Delhi, India",
+//     "to": "Jaipur, Rajasthan, India",
+//     "capacity": 50,
+//     "date": "2024-02-28",
+//     "description": "lets go",
+//     "requests": [
+//         {
+//             "_id": "65df19cccbf70ed1d138a9f3",
+//             "passenger": {
+//                 "ratingStats": {
+//                     "totalRatings": 0,
+//                     "averageRating": null
+//                 },
+//                 "_id": "65df192ccbf70ed1d138a9e6",
+//                 "firstName": "admin",
+//                 "lastName": "admin",
+//                 "password": "$2b$11$SeP5BjPkStrNbxoSSNlRJOVk1IAnfNSkzn5Qnp2YBiQ47Ba4f5hAO",
+//                 "email": "admin@muj.manipal.edu",
+//                 "verifiedEmail": true,
+//                 "createdAt": "2024-02-28T11:29:48.299Z",
+//                 "updatedAt": "2024-02-28T11:29:48.299Z",
+//                 "__v": 0
+//             },
+//             "ride": "65df19b4cbf70ed1d138a9ea",
+//             "status": "pending",
+//             "createdAt": "2024-02-28T11:32:28.921Z",
+//             "updatedAt": "2024-02-28T11:32:28.921Z",
+//             "__v": 0
+//         }
+//     ],
+//     "createdAt": "2024-02-28T11:32:04.465Z",
+//     "updatedAt": "2024-02-28T11:32:29.060Z",
+//     "__v": 1
 // }
