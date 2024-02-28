@@ -3,40 +3,46 @@ import { searchRidesApi } from '../services/auth/rideApis';
 import { useDispatch } from "react-redux";
 import { setSerchedRides } from "../store/slices/dataSlice";
 import { useNavigate } from "react-router-dom";
+import PlacesAutoComplete from "react-google-autocomplete"
+import ReactGoogleAutocomplete from "react-google-autocomplete";
 
 export const SearchRide = () => {
-    const dispatcher = useDispatch();
-    const navigator = useNavigate();
-    const [searchData, setSearchData] = useState({
-        from: '',
-        to: '',
-        date: '',
-      });
-    
-      const [rideResults, setRideResults] = useState([]);
+  const dispatcher = useDispatch();
+  const navigator = useNavigate();
+  const [searchData, setSearchData] = useState({
+    from: '',
+    to: '',
+    date: '',
+  });
 
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setSearchData((prevSearchData) => ({
-          ...prevSearchData,
-          [name]: value,
-        }));
-      };
+  const [rideResults, setRideResults] = useState([]);
 
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
-        dispatcher(setSerchedRides(data.rides));
-        navigator("/ride-details")
-        // if (data && data.rides) {
-        //   setRideResults(data.rides);
-        // } else {
-        //   setRideResults([]);
-        // }
-      };
+  const [from, setFrom] = useState("")
+  const [to, setTo] = useState("")
+  const [date, setDate] = useState("")
 
-    return (
-        <div className="flex backdrop-blur flex-1 justify-center items-center max-h-screen h-[90vh]">
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSearchData((prevSearchData) => ({
+      ...prevSearchData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
+    dispatcher(setSerchedRides(data.rides));
+    navigator("/ride-details")
+    // if (data && data.rides) {
+    //   setRideResults(data.rides);
+    // } else {
+    //   setRideResults([]);
+    // }
+  };
+
+  return (
+    <div className="flex backdrop-blur flex-1 justify-center items-center max-h-screen h-[90vh]">
       <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
         <h2 className="text-2xl font-semibold mb-4">Search for a ride</h2>
 
@@ -45,14 +51,20 @@ export const SearchRide = () => {
             <label htmlFor="from" className="block text-sm font-medium text-gray-600">
               From
             </label>
-            <input
+            {/* <input
               type="text"
               id="from"
               name="from"
               value={searchData.from}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter starting point"
+            /> */}
+            <ReactGoogleAutocomplete
+              className="w-full border border-gray-200 rounded-md mt-1 p-2"
+              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              placeholder="Enter starting location"
+              onPlaceSelected={(places) => { console.log(places); setFrom(places.formatted_address) }}
             />
           </div>
 
@@ -60,14 +72,20 @@ export const SearchRide = () => {
             <label htmlFor="to" className="block text-sm font-medium text-gray-600">
               To
             </label>
-            <input
+            {/* <input
               type="text"
               id="to"
               name="to"
               value={searchData.to}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter destination"
+            /> */}
+            <ReactGoogleAutocomplete
+              className="w-full border border-gray-200 rounded-md mt-1 p-2"
+              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              placeholder="Enter destination"
+              onPlaceSelected={(places) => { console.log(places); setTo(places.formatted_address) }}
             />
           </div>
 
@@ -76,12 +94,12 @@ export const SearchRide = () => {
               Date
             </label>
             <input
-              type="date"  
+              type="date"
               id="date"
               name="date"
               value={searchData.date}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter date"
             />
           </div>
@@ -111,5 +129,5 @@ export const SearchRide = () => {
 
       </div>
     </div>
-    )
+  )
 }
