@@ -3,7 +3,6 @@ import { searchRidesApi } from '../services/auth/rideApis';
 import { useDispatch } from "react-redux";
 import { setSerchedRides } from "../store/slices/dataSlice";
 import { useNavigate } from "react-router-dom";
-import PlacesAutoComplete from "react-google-autocomplete"
 import ReactGoogleAutocomplete from "react-google-autocomplete";
 
 export const SearchRide = () => {
@@ -31,7 +30,8 @@ export const SearchRide = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
+    // const data = await searchRidesApi(searchData.from, searchData.to, searchData.date);
+    const data = await searchRidesApi(from, to, date);
     dispatcher(setSerchedRides(data.rides));
     navigator("/ride-details")
     // if (data && data.rides) {
@@ -97,8 +97,8 @@ export const SearchRide = () => {
               type="date"
               id="date"
               name="date"
-              value={searchData.date}
-              onChange={handleChange}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
               className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter date"
             />

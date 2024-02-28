@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { createRideApi } from '../services/auth/rideApis';
+import ReactGoogleAutocomplete from "react-google-autocomplete";
 
 export const CreateRide = () => {
   const [formData, setFormData] = useState({
@@ -18,9 +19,22 @@ export const CreateRide = () => {
     }));
   };
 
+  const [from, setFrom] = useState("")
+  const [to, setTo] = useState("")
+
+  // const [date, setDate] = useState("")
+  // const [capacity, setCapacity] = useState("")
+  // const [description, setDescription] = useState("")
+
+  const dateRef = useRef();
+  const descriptionRef = useRef();
+  const capacityRef = useRef();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await createRideApi(formData.from, formData.to, formData.capacity, formData.date, formData.description);
+    const data = await createRideApi(from, to, capacityRef.current.value, dateRef.current.value, descriptionRef.current.value)
+    console.log(data)
+    // const data = await createRideApi(formData.from, formData.to, formData.capacity, formData.date, formData.description);
   };
 
   return (
@@ -33,7 +47,7 @@ export const CreateRide = () => {
             <label htmlFor="from" className="block text-sm font-medium text-gray-600">
               From
             </label>
-            <input
+            {/* <input
               type="text"
               id="from"
               name="from"
@@ -41,6 +55,12 @@ export const CreateRide = () => {
               onChange={handleChange}
               className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
               placeholder="Enter starting point"
+            /> */}
+            <ReactGoogleAutocomplete
+              className="w-full border border-gray-200 rounded-md mt-1 p-2"
+              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              placeholder="Enter starting location"
+              onPlaceSelected={(places) => { console.log(places); setFrom(places.formatted_address) }}
             />
           </div>
 
@@ -48,14 +68,20 @@ export const CreateRide = () => {
             <label htmlFor="to" className="block text-sm font-medium text-gray-600">
               To
             </label>
-            <input
+            {/* <input
               type="text"
               id="to"
               name="to"
               value={formData.to}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter destination"
+            /> */}
+            <ReactGoogleAutocomplete
+              className="w-full border border-gray-200 rounded-md mt-1 p-2"
+              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              placeholder="Enter destination"
+              onPlaceSelected={(places) => { console.log(places); setTo(places.formatted_address) }}
             />
           </div>
 
@@ -67,9 +93,8 @@ export const CreateRide = () => {
               type="number"
               id="capacity"
               name="capacity"
-              value={formData.capacity}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              ref={capacityRef}
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               min="1"
               max="50"
             />
@@ -80,12 +105,11 @@ export const CreateRide = () => {
               Date
             </label>
             <input
-              type="date"  
+              type="date"
               id="date"
               name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              ref={dateRef}
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter date"
             />
           </div>
@@ -97,9 +121,8 @@ export const CreateRide = () => {
             <textarea
               id="description"
               name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-200 rounded-md" 
+              ref={descriptionRef}
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter description"
             />
           </div>

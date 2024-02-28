@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaPlus } from "react-icons/fa";
 
 export const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -35,6 +36,10 @@ export const Navbar = () => {
         </div>
 
         <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:flex lg:items-center`} >
+          <Link to="/create" className="px-3 py-2 rounded-lg bg-orange text-white flex gap-1 items-center">
+            <FaPlus />
+            <p>Create Ride</p>
+          </Link>
           <Link to="/my-rides" className={`block lg:inline-block px-4 py-2 mx-2 rounded-lg ${location.pathname === "/my-rides" && "bg-white/50"}`}>My Rides</Link>
           <Link to="/search" className={`block lg:inline-block px-4 py-2 mx-2 rounded-lg ${location.pathname === "/search" && "bg-white/50"}`}>Search Rides</Link>
           <Link to="/my-requests" className={`block lg:inline-block px-4 py-2 mx-2 rounded-lg ${location.pathname === "/my-requests" && "bg-white/50"}`}>My Requests</Link>
