@@ -23,9 +23,9 @@ export const LoginForm = ({switcher}) => {
         {/*<form onSubmit={submitHandler} className="border-black grid grid-rows-2 ">*/}
         <form onSubmit={submitHandler} className="border-black flex flex-col">
             <label className="mt-2">Email:</label>
-            <input type="email" onChange={(e)=>{setEmail(e.target.value)}} className="bg-[rgba(0,0,0,0)] text-lg  border-[1px] outline-none rounded-md px-2 py-1" id={"email"} required={true} value={email}/>
+            <input type="email" onChange={(e)=>{setEmail(e.target.value)}} className="bg-[rgba(0,0,0,0)] text-lg  border-[1px] border-black  outline-none rounded-md px-2 py-1" id={"email"} required={true} value={email}/>
             <label className="mt-2">Password:</label>
-            <input type="password" onChange={(e)=>{setPassword(e.target.value)}} className="bg-[rgba(0,0,0,0)] text-lg  border-[1px] outline-none rounded-md px-2 py-1" id={"password"} required={true} value={password}/>
+            <input type="password" onChange={(e)=>{setPassword(e.target.value)}} className="bg-[rgba(0,0,0,0)] text-lg  border-[1px] border-black  outline-none rounded-md px-2 py-1" id={"password"} required={true} value={password}/>
             <button type="submit" className="bg-orange text-[rgb(255,255,255)] rounded-lg py-2 mt-4 overflow-clip">LogIn</button>
         </form>
             <button onClick={()=>{switcher(prev => !prev)}} className="text-nowrap text-lg">SignUp ?</button>

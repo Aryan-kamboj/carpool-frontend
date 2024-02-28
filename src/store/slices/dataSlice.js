@@ -8,10 +8,13 @@ export const dataSlice = createSlice({
   reducers: {
     setSerchedRides:(state,action)=>{
       state.searchedRides = action.payload
+    },
+    setMyRides:(state,action)=>{
+      state.myRides = action.payload
     }
   },
 });
 
-export const { setSerchedRides } = dataSlice.actions;
+export const { setSerchedRides,setMyRides } = dataSlice.actions;
 
 export default dataSlice.reducer;

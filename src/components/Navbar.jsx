@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaPlus } from "react-icons/fa";
-
+import bg from "../assets/bg_1.jpg"
 export const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -11,6 +11,8 @@ export const Navbar = () => {
   };
 
   return (
+    <div>
+    <img className='absolute h-screen w-screen z-[-100]' src={bg}/>
     <nav className="backdrop-blur-3xl bg-white/50 p-3">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold">Travel Buddy</div>
@@ -46,6 +48,7 @@ export const Navbar = () => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 

@@ -20,13 +20,13 @@ export const SignUpForm = ({switcher}) => {
         <div className={"flex flex-col sm:flex-row w-full space-x-0 sm:space-x-4 mt-2 max-sm:mt-0"}>
           <div className="flex flex-col flex-1">
             <label className={"text-lg"}> First Name:</label>
-            <input className="bg-[rgba(0,0,0,0)] border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
+            <input className="bg-[rgba(0,0,0,0)] border-black border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
                    ref={refFname} type="text" required={true}/>
           </div>
 
           <div className="flex flex-col flex-1">
             <label className={"text-lg"}>Last Name:</label>
-            <input className="bg-[rgba(0,0,0,0)] border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
+            <input className="bg-[rgba(0,0,0,0)] border-black border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
                    ref={refLname} type="text" required={true}/>
           </div>
         </div>
@@ -34,13 +34,13 @@ export const SignUpForm = ({switcher}) => {
         <div className={"flex flex-col sm:flex-row w-full space-x-0 sm:space-x-4 mt-2 max-sm:mt-0"}>
           <div className="flex flex-col flex-1">
             <label className={"text-lg"}>Email:</label>
-            <input className="bg-[rgba(0,0,0,0)] border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
+            <input className="bg-[rgba(0,0,0,0)] border-black border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
                    ref={refEmail} type="email" required={true}/>
           </div>
 
           <div className="flex flex-col flex-1">
             <label className={"text-lg"}>Password:</label>
-            <input className="bg-[rgba(0,0,0,0)] border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
+            <input className="bg-[rgba(0,0,0,0)] border-black border-[1px]  bg-transparent outline-none rounded-md px-2 py-1"
                    ref={refPass} type="password" required={true}/>
           </div>
         </div>
