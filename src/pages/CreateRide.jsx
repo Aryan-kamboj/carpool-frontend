@@ -29,10 +29,10 @@ export const CreateRide = () => {
   const dateRef = useRef();
   const descriptionRef = useRef();
   const capacityRef = useRef();
-
+  const perHeadRef = useRef();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await createRideApi(from, to, capacityRef.current.value, dateRef.current.value, descriptionRef.current.value)
+    const data = await createRideApi(from, to, capacityRef.current.value, dateRef.current.value, perHeadRef.current.value, descriptionRef.current.value)
     console.log(data)
     // const data = await createRideApi(formData.from, formData.to, formData.capacity, formData.date, formData.description);
   };
@@ -113,7 +113,18 @@ export const CreateRide = () => {
               placeholder="Enter date"
             />
           </div>
-
+          <div className="mb-4">
+            <label htmlFor="capacity" className="block text-sm font-medium text-gray-600">
+              Per head cost
+            </label>
+            <input
+              type="number"
+              id="perHead"
+              name="perHead"
+              ref={perHeadRef}
+              className="mt-1 p-2 w-full border border-gray-200 rounded-md"
+            />
+          </div>
           <div className="mb-4">
             <label htmlFor="description" className="block text-sm font-medium text-gray-600">
               Description

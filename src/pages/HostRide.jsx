@@ -17,27 +17,20 @@ export const HostRide = () => {
     console.log(ride);
     // const {averageRating,totalRatings} = ride?.host?.ratingStats;
     return (<div className="w-screen flex-1 backdrop-blur pt-5">
-                <div className="w-[90%] backdrop-blur mx-auto rounded-3xl border-[1px] border-white">
-                    {ride && <div className='flex flex-col justify-between items-center '>
-                    <div className='flex items-center space-x-4'>
-                        <span>
+                <div className="w-[90%] backdrop-blur mx-auto overflow-hidden rounded-3xl border-[1px] border-white">
+                    {ride && <div className='flex flex-col space-y-4 justify-between p-8 bg-[rgba(255,255,255,0.4)]  '>
+                        <div>
                             From : <span className='font-bold'>{ride?.from}</span>
-                        </span>
-                        <FaAnglesRight/>
-                        <span>
+                        </div>
+                        <div>
                             To : <span className='font-bold'>{ride?.to}</span>
-                        </span>
-                    </div>
-                    <div className='flex space-x-4'>
-                        <span>
-                            On : <span className='font-bold'>{ride?.date}</span>
-                        </span>
-                        <span className='space-x-1 flex items-center'>
-                            <IoPeople className='inline-block'/>
-                            <span>{ride?.capacity}</span>
-                        </span>
-                    </div>
-                <div className='flex flex-col items-center justify-between '>
+                        </div>
+                        <div>
+                            Date : <span className='font-bold'>{ride?.date}</span>
+                        </div>
+                        <div className=''>
+                        Total number of passengers : <span className="font-bold">{ride?.capacity}</span>
+                        </div>
             <div className='text-richblack-600'>
                 {ride?.description}
             </div>
@@ -55,7 +48,6 @@ export const HostRide = () => {
                     <span>({totalRatings})</span>
                 </div> */}
                 </div>
-            </div>
             </div>}
             </div>
             </div>)

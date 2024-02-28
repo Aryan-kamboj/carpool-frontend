@@ -9,13 +9,14 @@ import {
 } from "../apiEndpoints";
 import toast from "react-hot-toast";
 
-export const createRideApi = async (from, to, capacity, date, description) => {
+export const createRideApi = async (from, to, capacity, date, price, description) => {
   try {
     const bodyData = {
       from,
       to,
       capacity,
       date,
+      price,
       description,
     };
     const request = {
