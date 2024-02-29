@@ -11,10 +11,13 @@ export const dataSlice = createSlice({
     },
     setMyRides:(state,action)=>{
       state.myRides = action.payload
+    },
+    setRideDetails:(state,action)=>{
+      state.rideDetails = action.payload;
     }
   },
 });
 
-export const { setSerchedRides,setMyRides } = dataSlice.actions;
+export const { setSerchedRides,setMyRides,setRideDetails } = dataSlice.actions;
 
 export default dataSlice.reducer;

@@ -6,6 +6,7 @@ import {
   reqToJoinEndpoint,
   searchRideEndpoints,
   getRideDetailsEndpoint,
+  setReqStatusEndpoint
 } from "../apiEndpoints";
 import toast from "react-hot-toast";
 
@@ -142,3 +143,33 @@ export const getRideDetails = async (id)=>{
     console.log(error)
   }
 }
+export const setReqStatus = async (requestId,status)=>{
+  try {
+    const bodyData = {
+      requestId,status
+    } 
+    const request = {
+      url:`${setReqStatusEndpoint.url}`,
+      method:setReqStatusEndpoint.method,
+      withCredentials:setReqStatusEndpoint.withCredentials,
+      bodyData
+    }
+    toast.loading("Updating request status");
+    await apiConnector(request);
+    toast.dismiss();
+    toast.success("Ride status updated");
+  }catch (error) {
+    toast.dismiss();
+    toast.error("Could not get ride details");
+    console.log(error)
+  }
+}
+// export const setRequestStatus = async (updated)=>{
+//   try {
+    
+//   } catch (error) {
+//     toast.dismiss();
+//     toast.error("Could not update request status");
+//     return 
+//   }
+// }

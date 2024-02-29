@@ -8,14 +8,17 @@ import { IoPeople } from "react-icons/io5";
 import { RequestBar } from "../components/RequestBar";
 import { EditRideCard } from "../components/EditRideCard";
 import { RideDetailsCard } from "../components/RideDetailsCard";
+import { useDispatch, useSelector } from "react-redux";
+import { setRideDetails } from "../store/slices/dataSlice";
 export const HostRide = () => {
     const {id} = useParams();
-    const [ride,setRide] = useState(null);
+    const ride = useSelector((store)=>store.dataSlice.rideDetails);
+    const dispatcher = useDispatch();
     const [editActive,setEdit] = useState(false);
     console.log(id);
     useEffect(()=>{
         (async()=>{
-            setRide(await getRideDetails(id).then((value)=>value.rideDetails));
+            dispatcher(setRideDetails((await getRideDetails(id).then((value)=>value.rideDetails))));
         })()
     },[id])
     console.log(ride);
@@ -24,9 +27,9 @@ export const HostRide = () => {
                 <div className="w-[90%] backdrop-blur mx-auto overflow-hidden rounded-3xl border-[1px] border-white">
             {ride && <div className="flex bg-[rgba(255,255,255,0.4)] ">
                         {editActive?<EditRideCard setEdit={setEdit} ride={ride}/>:<RideDetailsCard setEdit={setEdit} ride={ride}/>}
-                        <div>
-                            {ride?.requests.map((request)=>{
-                                return (<RequestBar request={request}/>)
+                        <div className="w-[80%] border-l-white border-l-[1px]">
+                            {ride?.requests.map((request,i)=>{
+                                return (<RequestBar key={i} request={request}/>)
                             })}
                         </div>
                     </div>}

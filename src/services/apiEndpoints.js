@@ -42,3 +42,8 @@ export const getRideDetailsEndpoint = {
     method: "POST",
     withCredentials: true  
 }
+export const setReqStatusEndpoint = {
+    url: `${BASE_URL}/api/rides/update-status`,
+    method: "POST",
+    withCredentials: true   
+}
