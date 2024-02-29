@@ -3,7 +3,7 @@ import { LoginForm } from "../components/LoginForm"
 import { SignUpForm } from "../components/SignUpForm";
 import bg_1 from "../assets/bg_1.jpg"
 export const LoginSignup = () => {
-
+  
   document.addEventListener("keydown",(e)=>{
     if(e.key==="Tab"){
       e.preventDefault();

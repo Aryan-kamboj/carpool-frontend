@@ -2,10 +2,16 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaPlus } from "react-icons/fa";
 import bg from "../assets/bg_1.jpg"
+import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-
+  const navigator = useNavigate();
+  const authToken  = document.cookie;
+  console.log(document.cookie);
+  // if(!(authToken?.length>0)){
+  //   navigator("/login");
+  // }
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
