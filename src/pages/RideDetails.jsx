@@ -12,7 +12,7 @@ export const RideDetails = () => {
   console.log(rides);
   return (
     <div className='backdrop-blur hideScrollBars flex-1 pt-4 px-10'>
-        {rides.length>0?<div className={"space-y-4"}>{rides.map((ride,i)=>{
+        {rides.length>0?<div className={"space-y-4"}>{rides?.map((ride,i)=>{
           return(<div className='relative flex' key={i} >
             <RideBar data={ride}/>
             <button className=' p-2 absolute right-[1rem] bottom-[1rem] rounded-xl bg-orange px-6 text-white w-fit h-fit' onClick={()=>{handleJoinReq(ride._id)}}>Request to join</button>

@@ -1,12 +1,11 @@
 import { IoIosMan } from "react-icons/io";
 import { PiStarFill,PiStarHalfFill,PiStar } from "react-icons/pi";
 export const RideDetailsCard = ({ride,setEdit}) => {
-  let averageRating = 0;
-  let totalRatings = 0;
-  if (ride && ride.ratingStats) {
-    averageRating = ride.ratingStats.averageRating;
-    totalRatings = ride.ratingStats.totalRatings;
-  }
+  let {averageRating,totalRatings}  = ride.host.ratingStats ;
+  // if (ride && ride.ratingStats) {
+  //   averageRating = ride.ratingStats.averageRating;
+  //   totalRatings = ride.ratingStats.totalRatings;
+  // }
   return (
     <div className='flex flex-col space-y-4 justify-between p-8 w-[35%]  '>
         <div>

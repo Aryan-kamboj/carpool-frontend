@@ -31,33 +31,35 @@ import { IoPeople } from "react-icons/io5";
 //     }
     export const RideBar = ({data}) => {
         const {host,description}=data;
-        console.log(host,description)
-    let averageRating ;
-    let totalRatings;
-    if (data && data?.ratingStats) {
-        averageRating = data.ratingStats.averageRating;
-        totalRatings = data.ratingStats.totalRatings;
-    }
+        // console.log("crazy hi kr diya sirrr" ,host,description)
+        // console.log("fadsklfjlaksdfjasdkl" ,data);
+    let {averageRating,totalRatings} = host.ratingStats ;
+    console.log(averageRating,totalRatings);
+    // let totalRatings ;
+    // if (host && host?.ratingStats) {
+    //     averageRating = host.ratingStats.averageRating;
+    //     totalRatings = host.ratingStats.totalRatings;
+    // }
     return (
     <div className='flex flex-1 flex-col justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[25vh] '>
         {data&&<div>
                 <div className='flex flex-col justify-between items-center '>
                 <div className='flex items-center space-x-4'>
                     <span>
-                        From : <span className='font-bold'>{data.from}</span>
+                        From : <span className='font-bold'>{data?.from}</span>
                     </span>
                     <FaAnglesRight/>
                     <span>
-                        To : <span className='font-bold'>{data.to}</span>
+                        To : <span className='font-bold'>{data?.to}</span>
                     </span>
                 </div>
                 <div className='flex space-x-4'>
                     <span>
-                        On : <span className='font-bold'>{data.date}</span>
+                        On : <span className='font-bold'>{data?.date}</span>
                     </span>
                     <span className='space-x-1 flex items-center'>
                         <IoPeople className='inline-block'/>
-                        <span className='font-bold'>{data.capacity}</span>
+                        <span className='font-bold'>{data?.capacity}</span>
                     </span>
                 </div>
                 <div>
@@ -71,7 +73,7 @@ import { IoPeople } from "react-icons/io5";
                 <div className='flex items-center space-x-4'>
 
                     <div className='h-[3rem] w-[3rem] flex items-center justify-center  border-[1px] rounded-full'>{<IoIosMan className='inline-block text-4xl'/>}</div>
-                    <span>{host.firstName} {host.lastName}</span>
+                    <span>{host?.firstName} {host?.lastName}</span>
                     {host&&<div className='flex items-center space-x-4'>
                         <div className={`flex bg-clip-text text-[#e49100] relative justify-evenly mx-0 space-x-2`}>
                             {(averageRating>=1||(averageRating>0.5))?<PiStarFill/>:(averageRating<=0.5)&&(averageRating>0)?<PiStarHalfFill/>:<PiStar/>}

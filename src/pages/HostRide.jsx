@@ -1,10 +1,6 @@
 import {  useParams } from "react-router-dom"
-import { PiStarFill,PiStarHalfFill,PiStar } from "react-icons/pi";
 import { getRideDetails } from "../services/auth/rideApis";
 import { useEffect, useState } from "react";
-import { IoIosMan } from "react-icons/io";
-import { FaAnglesRight } from "react-icons/fa6";
-import { IoPeople } from "react-icons/io5";
 import { RequestBar } from "../components/RequestBar";
 import { EditRideCard } from "../components/EditRideCard";
 import { RideDetailsCard } from "../components/RideDetailsCard";
