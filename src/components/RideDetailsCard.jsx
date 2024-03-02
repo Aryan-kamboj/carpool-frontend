@@ -1,13 +1,13 @@
 import { IoIosMan } from "react-icons/io";
 import { PiStarFill,PiStarHalfFill,PiStar } from "react-icons/pi";
 export const RideDetailsCard = ({ride,setEdit}) => {
-  let {averageRating,totalRatings}  = ride.host.ratingStats ;
+  let {averageRating,totalRatings}  = ride?.host?.ratingStats ;
   // if (ride && ride.ratingStats) {
   //   averageRating = ride.ratingStats.averageRating;
   //   totalRatings = ride.ratingStats.totalRatings;
   // }
   return (
-    <div className='flex flex-col space-y-4 justify-between p-8 w-[35%]  '>
+    <div className='flex flex-col space-y-4 justify-between p-8 w-[35%] max-md:w-full  '>
         <div>
             From : <span className='font-bold'>{ride?.from}</span>
         </div>
@@ -26,7 +26,7 @@ export const RideDetailsCard = ({ride,setEdit}) => {
         <div className='text-richblack-600'>
             Ride description : {ride?.description}
         </div>
-        <div className='flex items-center space-x-4'>
+        <div className='flex items-center max-md:flex-col max-md:space-x-0 max-md:space-y-2 space-x-4'>
             <div className='h-[3rem] w-[3rem] flex items-center justify-center  border-[1px] rounded-full'>{<IoIosMan className='inline-block text-4xl'/>}</div>
             <span>{ride?.host.firstName} {ride?.host.lastName}</span>
           {ride&&<div className='flex items-center space-x-4'>

@@ -3,15 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaPlus } from "react-icons/fa";
 import bg from "../assets/bg_1.jpg"
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 export const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigator = useNavigate();
-  // const authToken  = document.cookie;
-  // console.log(document.cookie);
-  // if(!(authToken?.length>0)){
-  //   navigator("/login");
-  // }
+  const authToken = Cookies.get("secret-token");
+  if(!(authToken?.length>0)){
+    navigator("/login");
+  }
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };

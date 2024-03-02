@@ -27,13 +27,13 @@ export const DropDown = ({handler,selected}) => {
     }
     }>
       {showDropdown ?
-        <div className="absolute z-[500] w-fit right-0 min-w-[5rem] top-0 rounded-md overflow-hidden">
+        <div className="absolute z-[500] w-fit right-0 min-w-[5rem] min-md:top-0 max-md:bottom-0 rounded-md overflow-hidden">
           {titles.map(function (title, index) {
             return <div key={index} onClick={() => handler(title)}
-                        className={`px-3 w-[8vw] hover:border-b-white border-b-[2px] border-[${colorMap2}] text-white hover:cursor-pointer py-2 text-center text-sm ${colorMap2[title]}`}>{title}</div>
+                        className={`px-3 max-md:w-[30vw] w-[8vw] hover:border-b-white border-b-[2px] border-[${colorMap2}] text-white hover:cursor-pointer py-2 text-center text-sm ${colorMap2[title]}`}>{title}</div>
           })}
         </div> :
-        <div className={` ${colorMap[selected]} justify-between flex w-[8vw] items-center absolute right-0 px-3 py-2 rounded-md text-center text-sm hover:cursor-pointer`}>
+        <div className={` ${colorMap[selected]} justify-between max-md:w-[30vw] flex w-[8vw] items-center absolute right-0 px-3 py-2 rounded-md text-center text-sm hover:cursor-pointer`}>
           <span>{selected}</span><MdArrowDropDown className={"text-2xl"}/>
         </div>
       }

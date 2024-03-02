@@ -6,28 +6,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMyRides } from '../store/slices/dataSlice';
 import Cookies from 'js-cookie';
 export const MyRides = () => {
-    console.log(Cookies.get("secret-token"));
-    // console.log(document.cookie);
     const dispatcher = useDispatch();
     const data = useSelector((store)=>{
-        console.log(store?.dataSlice?.myRides);
         return store?.dataSlice?.myRides;
     })
     useEffect(()=>{
         (async()=>{
-            dispatcher(setMyRides(await myRidesApi().then((value)=>{console.log(value);return value.rides;})));
+            dispatcher(setMyRides(await myRidesApi().then((value)=>{return value.rides;})));
         })()
     },[]);
-    console.log(data);
+    // console.log(data);
     const navigator = useNavigate();
     const handleClick = (id)=>{
         navigator(`/my-rides/${id}`)
-        console.log(id);
+        // console.log(id);
     }
   return (
     <div className='backdrop-blur hideScrollBars overflow-y-scroll flex-1 pt-4 space-y-4'>   
         {data?.length>0?data?.map((ride,i)=>{
-            console.log(ride);
+            {/* console.log(ride); */}
             return (<div  key={i} onClick={()=>{handleClick(ride?._id)}}>
                 <RideBar data={ride}/>
             </div>)

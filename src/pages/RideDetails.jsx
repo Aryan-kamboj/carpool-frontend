@@ -11,11 +11,11 @@ export const RideDetails = () => {
   }
   console.log(rides);
   return (
-    <div className='backdrop-blur hideScrollBars flex-1 pt-4 px-10'>
+    <div className='backdrop-blur overflow-scroll hideScrollBars flex-1 py-4 max-md:px-2 px-10'>
         {rides.length>0?<div className={"space-y-4"}>{rides?.map((ride,i)=>{
-          return(<div className='relative flex' key={i} >
+          return(<div className='relative max-md:space-y-1 flex max-md:flex-col' key={i} >
             <RideBar data={ride}/>
-            <button className=' p-2 absolute right-[1rem] bottom-[1rem] rounded-xl bg-orange px-6 text-white w-fit h-fit' onClick={()=>{handleJoinReq(ride._id)}}>Request to join</button>
+            <button className=' p-2 max-md:static max-md:w-[95%] mx-auto absolute right-[1rem] bottom-[1rem] rounded-xl bg-orange px-6 text-white w-fit h-fit' onClick={()=>{handleJoinReq(ride._id)}}>Request to join</button>
           </div>
             )
         })}

@@ -22,7 +22,7 @@ export const RequestBar = ({request}) => {
     <div className="w-[100%]">{
         request&&<div className="flex justify-around items-center border-white border-b-[1px] bg-[rgba(255,255,255,0.7)] py-2 ">
             <div>{request.passenger.firstName} {request.passenger.lastName}</div>
-            <div>{request.createdAt.split("T")[0]}</div>
+            <div className={"max-md:hidden"}>{request.createdAt.split("T")[0]}</div>
             <div className={` px-3 py-2` }><DropDown handler={setStatusHandler} selected={status}/></div>
         </div>
     }
