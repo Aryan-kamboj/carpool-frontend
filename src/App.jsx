@@ -9,9 +9,13 @@ import MyRequests from './pages/MyRequests.jsx';
 import { RideDetails } from './pages/RideDetails.jsx';
 import { HostRide } from './pages/HostRide.jsx';
 import { Error404 } from './pages/Error404.jsx';
+import Cookies from "js-cookie"
+
 function App() {
   const location = useLocation();
   const {pathname} = location;
+  // console.log(Cookies.get("secret-token"));
+  // console.log(document.cookie);
   return (
     // <div className='bg-bg min-h-[100vh] h-screen'>
     <div className=' h-screen w-screen flex flex-col'>

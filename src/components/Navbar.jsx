@@ -7,8 +7,8 @@ export const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigator = useNavigate();
-  const authToken  = document.cookie;
-  console.log(document.cookie);
+  // const authToken  = document.cookie;
+  // console.log(document.cookie);
   // if(!(authToken?.length>0)){
   //   navigator("/login");
   // }
