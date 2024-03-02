@@ -11,14 +11,15 @@ export const RideDetails = () => {
   }
   console.log(rides);
   return (
-    <div className='backdrop-blur flex-1 pt-4 px-10'>
-        {rides?.length>0&&rides.map((ride,i)=>{
+    <div className='backdrop-blur hideScrollBars flex-1 pt-4 px-10'>
+        {rides.length>0?<div className={"space-y-4"}>{rides.map((ride,i)=>{
           return(<div className='relative flex' key={i} >
             <RideBar data={ride}/>
             <button className=' p-2 absolute right-[1rem] bottom-[1rem] rounded-xl bg-orange px-6 text-white w-fit h-fit' onClick={()=>{handleJoinReq(ride._id)}}>Request to join</button>
           </div>
             )
         })}
+      </div>:<div className={"items-center justify-center flex h-full"}><span className={"bg-[rgba(255,255,255,0.7)] p-8 rounded-lg text-3xl"}>No rides found for your search query</span></div>}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { searchRidesApi } from '../services/auth/rideApis';
 import { useDispatch } from "react-redux";
 import { setSerchedRides } from "../store/slices/dataSlice";
@@ -40,7 +40,39 @@ export const SearchRide = () => {
     //   setRideResults([]);
     // }
   };
-
+  // useEffect(() => {
+  //
+  //   var searchInput = 'search_input';
+  //   var searchOutput = 'search_output';
+  //
+  //   var autocomplete_out;
+  //   var autocomplete_in;
+  //   $(document).ready(function () {
+  //     autocomplete_in = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+  //       types: ['geocode'],
+  //
+  //     });
+  //
+  //     google.maps.event.addListener(autocomplete_in, 'place_changed', function () {
+  //       var near_place = autocomplete_in.getPlace();
+  //     });
+  //   });
+  //
+  //   $(document).ready(function () {
+  //     autocomplete_out = new google.maps.places.Autocomplete((document.getElementById(searchOutput)), {
+  //       types: ['geocode'],
+  //
+  //     });
+  //
+  //     google.maps.event.addListener(autocomplete_out, 'place_changed', function () {
+  //       var near_place = autocomplete_out.getPlace();
+  //     });
+  //   });
+  //   return ()=>{
+  //     google?.maps?.event.removeListener(autocomplete_out);
+  //     google?.maps?.event.removeListener(autocomplete_in);
+  //   }
+  // }, []);
   return (
     <div className="flex backdrop-blur flex-1 justify-center items-center max-h-screen h-[90vh]">
       <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
@@ -60,17 +92,22 @@ export const SearchRide = () => {
               className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter starting point"
             /> */}
+            {/*<label>Enter sfkdsjflksf Starting Location</label>*/}
+            {/*<input type="text" className="form-control" id="search_input" placeholder="Type address..."/>*/}
             <ReactGoogleAutocomplete
               className="w-full border border-gray-200 rounded-md mt-1 p-2"
-              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"
               placeholder="Enter starting location"
-              onPlaceSelected={(places) => { console.log(places); setFrom(places.formatted_address) }}
+              onPlaceSelected={(places) => {
+                console.log(places);
+                setFrom(places.formatted_address)
+              }}
             />
           </div>
 
           <div className="mb-4">
             <label htmlFor="to" className="block text-sm font-medium text-gray-600">
-              To
+            To
             </label>
             {/* <input
               type="text"
@@ -83,7 +120,7 @@ export const SearchRide = () => {
             /> */}
             <ReactGoogleAutocomplete
               className="w-full border border-gray-200 rounded-md mt-1 p-2"
-              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"
               placeholder="Enter destination"
               onPlaceSelected={(places) => { console.log(places); setTo(places.formatted_address) }}
             />

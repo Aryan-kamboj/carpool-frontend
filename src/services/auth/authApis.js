@@ -40,8 +40,12 @@ export const signupApi = async (firstName,lastName,email,password)=>{
         }
         toast.loading("Signing you up");
         const {data} = await apiConnector(request);
+        toast.dismiss();
+        toast.success("User registered successfully");
         return data;
     } catch (error) {
+        toast.dismiss();
+        toast.error("Could not register user");
         console.log(error)
     }
 }

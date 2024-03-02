@@ -122,14 +122,11 @@ export const reqToJoinApi = async (id)=>{
 }
 export const getRideDetails = async (id)=>{
   try {
-    const bodyData = {
-      id
-    }
+
     const request = {
-      url:`${getRideDetailsEndpoint.url}`,
+      url:`${getRideDetailsEndpoint.url}/get/${id}`,
       method:getRideDetailsEndpoint.method,
       withCredentials:getRideDetailsEndpoint.withCredentials,
-      bodyData,
     }
     toast.loading("Fetching ride detail");
     const {data} = await apiConnector(request);

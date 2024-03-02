@@ -58,7 +58,7 @@ export const CreateRide = () => {
             /> */}
             <ReactGoogleAutocomplete
               className="w-full border border-gray-200 rounded-md mt-1 p-2"
-              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"
               placeholder="Enter starting location"
               onPlaceSelected={(places) => { console.log(places); setFrom(places.formatted_address) }}
             />
@@ -79,7 +79,7 @@ export const CreateRide = () => {
             /> */}
             <ReactGoogleAutocomplete
               className="w-full border border-gray-200 rounded-md mt-1 p-2"
-              apiKey="AIzaSyCEIz540cvvMCv6QahtyY7-EKMcZEe-Nhk"
+              apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"
               placeholder="Enter destination"
               onPlaceSelected={(places) => { console.log(places); setTo(places.formatted_address) }}
             />

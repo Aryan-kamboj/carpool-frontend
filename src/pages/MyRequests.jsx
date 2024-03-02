@@ -31,7 +31,7 @@ function RequestItem({ setUserRideRequests, request }) {
   }
 
   return (
-    <div className={`w-full flex justify-between py-3 px-4 rounded-lg backdrop-blur bg-white/50 border border-transparent hover:border-black/20 hover:cursor-pointer`}>
+    <div className={`w-full hideScrollBars flex justify-between py-3 px-4 rounded-lg backdrop-blur bg-white/50 border border-transparent hover:border-black/20 hover:cursor-pointer`}>
       <div className="flex gap-1 items-center">
         <div className="font-bold">{request?.ride.from}</div>
         <p>to</p>

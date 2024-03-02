@@ -6,7 +6,7 @@ import { setRideDetails } from "../store/slices/dataSlice";
 import { useParams } from "react-router-dom";
 export const RequestBar = ({request}) => {
     console.log(request);
-    const [status,setStatus] = useState(request?.status);
+    const status = request?.status;
     const colorMap = {
     "pending": "bg-yellow-400",
     "approved": "bg-green-400",

@@ -8,6 +8,7 @@ import { MyRides } from './pages/MyRides.jsx';
 import MyRequests from './pages/MyRequests.jsx';
 import { RideDetails } from './pages/RideDetails.jsx';
 import { HostRide } from './pages/HostRide.jsx';
+import { Error404 } from './pages/Error404.jsx';
 function App() {
   const location = useLocation();
   const {pathname} = location;
@@ -24,6 +25,7 @@ function App() {
         <Route path='/my-rides' element={<MyRides/>}/>
         <Route path='/my-rides/:id' element={<HostRide/>}/>
         <Route path="/my-requests" element={<MyRequests />}/>
+        <Route path="*" element={<Error404/>}/>
       </Routes>
     </div>
   )

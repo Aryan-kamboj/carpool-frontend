@@ -27,14 +27,16 @@ export const HostRide = () => {
                 <div className="w-[90%] backdrop-blur mx-auto overflow-hidden rounded-3xl border-[1px] border-white">
             {ride && <div className="flex bg-[rgba(255,255,255,0.4)] ">
                         {editActive?<EditRideCard setEdit={setEdit} ride={ride}/>:<RideDetailsCard setEdit={setEdit} ride={ride}/>}
-                        <div className="w-[80%] border-l-white border-l-[1px]">
-                            {ride?.requests.map((request,i)=>{
-                                return (<RequestBar key={i} request={request}/>)
-                            })}
+                        <div className="w-[80%] border-l-white border-l-[1px]">{ride.requests.length > 0 ?
+                          <div>{ride?.requests.map((request, i) => {
+                              return (<RequestBar key={i} request={request}/>)
+                          })}</div>
+                        :<div className="text-center h-full w-full justify-center items-center flex">No requests made to this ride</div>}
                         </div>
-                    </div>}
-                </div>
-        </div>)
+                    </div>
+                }
+            </div>
+    </div>)
 }
 
 // {

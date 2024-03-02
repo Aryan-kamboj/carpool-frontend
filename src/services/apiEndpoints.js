@@ -39,7 +39,7 @@ export const reqToJoinEndpoint = {
 }
 export const getRideDetailsEndpoint = {
     url: `${BASE_URL}/api/rides`,
-    method: "POST",
+    method: "GET",
     withCredentials: true  
 }
 export const setReqStatusEndpoint = {
