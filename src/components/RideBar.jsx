@@ -32,7 +32,12 @@ import { IoPeople } from "react-icons/io5";
     export const RideBar = ({data}) => {
         const {host,description}=data;
         console.log(host,description)
-    const {averageRating,totalRatings} = host?.ratingStats;
+    let averageRating ;
+    let totalRatings;
+    if (data && data?.ratingStats) {
+        averageRating = data.ratingStats.averageRating;
+        totalRatings = data.ratingStats.totalRatings;
+    }
     return (
     <div className='flex flex-1 flex-col justify-around w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[25vh] '>
         {data&&<div>
