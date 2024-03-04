@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSerchedRides } from "../store/slices/dataSlice";
 import { useNavigate } from "react-router-dom";
 import ReactGoogleAutocomplete from "react-google-autocomplete";
+import GoogleMapsAutocomplete from "../components/GoogleMapsAutocomplete.jsx";
 
 export const SearchRide = () => {
   const dispatcher = useDispatch();
@@ -74,8 +75,9 @@ export const SearchRide = () => {
   //   }
   // }, []);
   return (
-    <div className="flex backdrop-blur flex-1 justify-center items-center max-h-screen h-[90vh]">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
+    <div className=" overflow-scroll hideScrollBars py-8 backdrop-blur flex-1 max-h-screen h-fit ">
+      <div className={"flex items-center justify-center h-full"}>
+      <div className="bg-white p-8 rounded-lg shadow-md w-fit sm:w-96 h-fit">
         <h2 className="text-2xl font-semibold mb-4">Search for a ride</h2>
 
         <form onSubmit={handleSubmit}>
@@ -94,15 +96,16 @@ export const SearchRide = () => {
             /> */}
             {/*<label>Enter sfkdsjflksf Starting Location</label>*/}
             {/*<input type="text" className="form-control" id="search_input" placeholder="Type address..."/>*/}
-            <ReactGoogleAutocomplete
-              className="w-full border border-gray-200 rounded-md mt-1 p-2"
-              apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"
-              placeholder="Enter starting location"
-              onPlaceSelected={(places) => {
-                console.log(places);
-                setFrom(places.formatted_address)
-              }}
-            />
+            {/*<ReactGoogleAutocomplete*/}
+            {/*  className="w-full border border-gray-200 rounded-md mt-1 p-2"*/}
+            {/*  apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"*/}
+            {/*  placeholder="Enter starting location"*/}
+            {/*  onPlaceSelected={(places) => {*/}
+            {/*    console.log(places);*/}
+            {/*    setFrom(places.formatted_address)*/}
+            {/*  }}*/}
+            {/*/>*/}
+            <GoogleMapsAutocomplete changeHandler={setFrom} placeholder={"Enter starting location"}/>
           </div>
 
           <div className="mb-4">
@@ -118,12 +121,13 @@ export const SearchRide = () => {
               className="mt-1 p-2 w-full border border-gray-200 rounded-md"
               placeholder="Enter destination"
             /> */}
-            <ReactGoogleAutocomplete
-              className="w-full border border-gray-200 rounded-md mt-1 p-2"
-              apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"
-              placeholder="Enter destination"
-              onPlaceSelected={(places) => { console.log(places); setTo(places.formatted_address) }}
-            />
+            {/*<ReactGoogleAutocomplete*/}
+            {/*  className="w-full border border-gray-200 rounded-md mt-1 p-2"*/}
+            {/*  apiKey="AIzaSyAC0nozW7irImOmfyCwDi5VPPoAlM65K10"*/}
+            {/*  placeholder="Enter destination"*/}
+            {/*  onPlaceSelected={(places) => { console.log(places); setTo(places.formatted_address) }}*/}
+            {/*/>*/}
+            <GoogleMapsAutocomplete changeHandler={setTo} placeholder={"Enter destination"}/>
           </div>
 
           <div className="mb-4">
@@ -164,6 +168,7 @@ export const SearchRide = () => {
         )} */}
 
 
+      </div>
       </div>
     </div>
   )

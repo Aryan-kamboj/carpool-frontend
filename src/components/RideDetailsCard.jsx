@@ -7,7 +7,7 @@ export const RideDetailsCard = ({ride,setEdit}) => {
   //   totalRatings = ride.ratingStats.totalRatings;
   // }
   return (
-    <div className='flex flex-col space-y-4 justify-between p-8 w-[35%] max-md:w-full  '>
+    <div className='flex flex-col h-fit space-y-4 justify-between p-8 w-[35%] max-md:w-full  '>
         <div>
             From : <span className='font-bold'>{ride?.from}</span>
         </div>

@@ -1,4 +1,4 @@
-import {  Routes,Route } from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 import { LoginSignup } from './pages/LoginSignup'
 import { CreateRide } from './pages/CreateRide.jsx';
 import { Navbar } from './components/Navbar.jsx';
@@ -10,12 +10,20 @@ import { RideDetails } from './pages/RideDetails.jsx';
 import { HostRide } from './pages/HostRide.jsx';
 import { Error404 } from './pages/Error404.jsx';
 import Cookies from "js-cookie"
+import {useEffect} from "react";
 
 function App() {
   const location = useLocation();
   const {pathname} = location;
   // console.log(Cookies.get("secret-token"));
   // console.log(document.cookie);
+  const navigator = useNavigate();
+  const authToken = Cookies.get("secret-token");
+  useEffect(() => {
+    if (!(authToken?.length > 0)) {
+      navigator("/login");
+    }
+  }, [authToken]);
   return (
     // <div className='bg-bg min-h-[100vh] h-screen'>
     <div className=' h-screen w-screen flex flex-col'>

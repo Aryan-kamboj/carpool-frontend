@@ -31,7 +31,7 @@ function RequestItem({ setUserRideRequests, request }) {
   }
 
   return (
-    <div className={`w-full hideScrollBars flex justify-between py-3 px-4 rounded-lg backdrop-blur bg-white/50 border border-transparent hover:border-black/20 hover:cursor-pointer`}>
+    <div className={`w-full  hideScrollBars flex justify-between py-3 px-4 rounded-lg backdrop-blur bg-white/50 border border-transparent hover:border-black/20 hover:cursor-pointer`}>
       <div className="flex gap-1 items-center">
         <div className="font-bold">{request?.ride.from}</div>
         <p>to</p>
@@ -68,8 +68,8 @@ export default function MyRequests() {
   }, []);
 
   return (
-    <div className={"w-screen flex-1 p-4 sm:p-8 xl:p-10 backdrop-blur"}>
-      <div className="flex flex-col gap-4 w-full sm:max-w-[90%] xl:max-w-[60%] mx-auto">
+    <div className={"w-screen overflow-scroll hideScrollBars flex-1 p-4 sm:p-8 xl:p-10 backdrop-blur"}>
+      <div className="flex flex-col   gap-4 w-full sm:max-w-[90%] xl:max-w-[60%] mx-auto">
         {userRideRequests?.length > 0 && userRideRequests.map(function (userRequest) {
           return <RequestItem key={userRequest._id} setUserRideRequests={setUserRideRequests} request={userRequest} />
         })}

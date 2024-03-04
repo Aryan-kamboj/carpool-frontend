@@ -12,7 +12,7 @@ export const LoginForm = ({switcher}) => {
         const data = await loginApi(email,password);
         console.log(data);
         if(data?.success===true){
-          navigator('/')
+          navigator('/search')
         }
     }
     const test = async()=>{

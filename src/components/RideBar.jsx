@@ -41,7 +41,7 @@ import { IoPeople } from "react-icons/io5";
     //     totalRatings = host.ratingStats.totalRatings;
     // }
     return (
-    <div className='flex flex-1 flex-col max-md:text-sm max-md:h-fit justify-around max-md:w-[95%]  w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-[25vh] '>
+    <div className='flex flex-1 flex-col max-md:text-sm max-md:h-fit justify-around max-md:w-[95%]  w-[70%] backdrop-blur bg-[rgba(255,255,255,0.2)] border-richblack-20 border mx-auto py-4 rounded-3xl h-fit '>
         {data&&<div>
                 <div className='flex flex-col justify-between max-md:space-y-2 items-center '>
                 <div className='flex  max-md:space-y-2  items-center max-md:flex-col space-x-4'>
