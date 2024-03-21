@@ -68,8 +68,8 @@ export default function MyRequests() {
   }, []);
 
   return (
-    <div className={"w-screen overflow-scroll hideScrollBars flex-1 p-4 sm:p-8 xl:p-10 backdrop-blur"}>
-      <div className="flex flex-col   gap-4 w-full sm:max-w-[90%] xl:max-w-[60%] mx-auto">
+    <div className={"w-screen overflow-auto hideScrollBars flex-1 p-4 sm:p-8 xl:p-10 backdrop-blur"}>
+      <div className="flex flex-col overflow-auto  gap-4 w-full sm:max-w-[90%] xl:max-w-[60%] mx-auto">
         {userRideRequests?.length > 0 && userRideRequests.map(function (userRequest) {
           return <RequestItem key={userRequest._id} setUserRideRequests={setUserRideRequests} request={userRequest} />
         })}
