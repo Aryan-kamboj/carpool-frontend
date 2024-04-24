@@ -1,30 +1,60 @@
 import { apiConnector } from "../apiConnection"
 import { loginEndpoint, signUpEndpoints } from "../apiEndpoints"
 import toast from "react-hot-toast";
+const login = localStorage.getItem("login")
 
-export const loginApi = async (email,password) =>{
+// export const loginApi = async (email,password) =>{
+//     try {
+//         console.log(loginEndpoint.withCredentials);
+//         const bodyData={
+//             email,password
+//         }
+//         const request = {
+//             url:loginEndpoint.url,
+//             method:loginEndpoint.method,
+//             bodyData,
+//             withCredentials: true,
+//         }
+//         console.log(request)
+//         toast.loading("Logging you in");
+//         const {data} = await apiConnector(request);
+//         toast.dismiss()
+//         toast.success("Logged in successfudilly")
+//         console.log(data);
+//         return data;
+//     } catch (error) {
+//         toast.dismiss()
+//         toast.error("Could not log you in")
+//        console.error(error);
+//     }
+// }
+export const loginApi = async ({email,password})=>{
     try {
-        console.log(loginEndpoint.withCredentials);
         const bodyData={
-            email,password
+            email:email,
+            password:password,
         }
         const request = {
-            url:loginEndpoint.url,
             method:loginEndpoint.method,
-            bodyData,
-            withCredentials: true,
+            url:loginEndpoint.url,
+            bodyData:bodyData,
+            creds:true,
         }
-        console.log(request)
-        toast.loading("Logging you in");
+        toast.loading("Logining you in");
         const {data} = await apiConnector(request);
-        toast.dismiss()
-        toast.success("Logged in successfudilly")
-        console.log(data);
+        toast.dismiss();
+        localStorage.removeItem("token");
+        console.log(localStorage);
+        localStorage.setItem("token",`${data.token}`)
+        store.dispatch(updateUserType(data.user))
+        toast.success("User logged in");
+        window.location.href="/";
         return data;
     } catch (error) {
-        toast.dismiss()
-        toast.error("Could not log you in")
-       console.error(error);
+        console.log(error);
+        toast.dismiss();
+        toast.error(error.response.data.message);
+        updateUserType(null);
     }
 }
 export const signupApi = async (firstName,lastName,email,password)=>{
