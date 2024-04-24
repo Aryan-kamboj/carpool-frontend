@@ -19,11 +19,11 @@ function App() {
   // console.log(document.cookie);
   const navigator = useNavigate();
   const authToken = Cookies.get("secret-token");
-  useEffect(() => {
-    if (!(authToken?.length > 0)) {
-      navigator("/login");
-    }
-  }, [authToken]);
+  // useEffect(() => {
+  //   if (!(authToken?.length > 0)) {
+  //     navigator("/login");
+  //   }
+  // }, [authToken]);
   return (
     // <div className='bg-bg min-h-[100vh] h-screen'>
     <div className=' h-screen w-screen flex flex-col'>

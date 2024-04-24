@@ -12,7 +12,7 @@ export const MyRides = () => {
     })
     useEffect(()=>{
         (async()=>{
-            dispatcher(setMyRides(await myRidesApi().then((value)=>{return value.rides;})));
+            dispatcher(setMyRides(await myRidesApi().then((value)=>{console.log(value);return value.rides;})));
         })()
     },[]);
     // console.log(data);

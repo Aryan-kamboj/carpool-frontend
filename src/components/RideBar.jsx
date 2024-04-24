@@ -3,37 +3,38 @@ import { IoIosMan } from "react-icons/io";
 import { PiStarFill,PiStarHalfFill,PiStar } from "react-icons/pi";
 import { FaAnglesRight } from "react-icons/fa6";
 import { IoPeople } from "react-icons/io5";
-// const data = 
-//     {
-//         _id: "65de1c99d3ebbaa1d1a9a00c",
-//         host: {
-//             ratingStats: {
-//                 totalRatings: 0,
-//                 averageRating: 4.3 
-//             },
-//             _id: "65ddbe21c53210eb952c3d1b",
-//             firstName: "Samarth",
-//             lastName: "Bagga",
-//             email: "samarthbagga@gmail.com",
-//             createdAt: "2024-02-27T10:49:05.861Z",
-//             updatedAt: "2024-02-27T10:49:05.861Z",
-//             __v: 0
-//         },
-//         from: "delhi",
-//         to: "jaipur",
-//         capacity: 1,
-//         date: "2024-02-27",
-//         description: "stuff",
-//         requests: [],
-//         createdAt: "2024-02-27T17:32:09.998Z",
-//         updatedAt: "2024-02-27T17:32:09.998Z",
-//         __v: 0
-//     }
+  // const data = 
+  //     {
+  //         _id: "65de1c99d3ebbaa1d1a9a00c",
+  //         host: {
+  //             ratingStats: {
+  //                 totalRatings: 0,
+  //                 averageRating: 4.3 
+  //             },
+  //             _id: "65ddbe21c53210eb952c3d1b",
+  //             firstName: "Samarth",
+  //             lastName: "Bagga",
+  //             email: "samarthbagga@gmail.com",
+  //             createdAt: "2024-02-27T10:49:05.861Z",
+  //             updatedAt: "2024-02-27T10:49:05.861Z",
+  //             __v: 0
+  //         },
+  //         from: "delhi",
+  //         to: "jaipur",
+  //         capacity: 1,
+  //         date: "2024-02-27",
+  //         description: "stuff",
+  //         requests: [],
+  //         createdAt: "2024-02-27T17:32:09.998Z",
+  //         updatedAt: "2024-02-27T17:32:09.998Z",
+  //         __v: 0
+  //     }
     export const RideBar = ({data}) => {
+      console.log(data);
         const {host,description}=data;
         // console.log("crazy hi kr diya sirrr" ,host,description)
         // console.log("fadsklfjlaksdfjasdkl" ,data);
-    let {averageRating,totalRatings} = host.ratingStats ;
+    let {averageRating,totalRatings} = host?.ratingStats ;
     console.log(averageRating,totalRatings);
     // let totalRatings ;
     // if (host && host?.ratingStats) {
