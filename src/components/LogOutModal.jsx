@@ -5,7 +5,8 @@ import {useNavigate} from "react-router-dom";
 function LogOutModal({setModal}) {
   const navigator = useNavigate();
   const logOutHandler = ()=>{
-    Cookies.remove('secret-token',{path:""});
+    // Cookies.remove('secret-token',{path:""});
+    localStorage.removeItem("token");
     navigator("/login");
   }
   return (

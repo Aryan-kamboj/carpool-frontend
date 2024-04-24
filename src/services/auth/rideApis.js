@@ -9,7 +9,7 @@ import {
   setReqStatusEndpoint
 } from "../apiEndpoints";
 import toast from "react-hot-toast";
-
+const login = localStorage.getItem("token");
 export const createRideApi = async (from, to, capacity, date, price, description) => {
   try {
     const bodyData = {
@@ -24,7 +24,9 @@ export const createRideApi = async (from, to, capacity, date, price, description
       url: createRideEndpoints.url,
       method: createRideEndpoints.method,
       bodyData,
-      withCredentials: true,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     };
     console.log(request);
     toast.loading("Creating the ride...");
@@ -50,7 +52,9 @@ export const searchRidesApi = async (from, to, date) => {
       url: searchRideEndpoints.url,
       method: searchRideEndpoints.method,
       bodyData,
-      withCredentials: true,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     };
     console.log(request);
     toast.loading("Search for rides...");
@@ -70,6 +74,9 @@ export async function rideRequestsApi() {
       url: getRideRequestsEndpoints.url,
       method: getRideRequestsEndpoints.method,
       withCredentials: getRideRequestsEndpoints.withCredentials,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     };
     toast.loading("Fetching user ride requests");
     const { data } = await apiConnector(request);
@@ -87,6 +94,9 @@ export const myRidesApi = async () => {
       method: myRidesEndpoint.method,
       url: myRidesEndpoint.url,
       withCredentials: myRidesEndpoint.withCredentials,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     };
     toast.loading("Getting your rides");
     const { data } = await apiConnector(request);
@@ -108,7 +118,10 @@ export const reqToJoinApi = async (id)=>{
       url:reqToJoinEndpoint.url,
       method:reqToJoinEndpoint.method,
       withCredentials:reqToJoinEndpoint.withCredentials,
-      bodyData
+      bodyData,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     }
     toast.loading("Sending your request to host");
     await apiConnector(request);
@@ -127,6 +140,9 @@ export const getRideDetails = async (id)=>{
       url:`${getRideDetailsEndpoint.url}/get/${id}`,
       method:getRideDetailsEndpoint.method,
       withCredentials:getRideDetailsEndpoint.withCredentials,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     }
     toast.loading("Fetching ride detail");
     const {data} = await apiConnector(request);
@@ -149,7 +165,10 @@ export const setReqStatus = async (requestId,status)=>{
       url:`${setReqStatusEndpoint.url}`,
       method:setReqStatusEndpoint.method,
       withCredentials:setReqStatusEndpoint.withCredentials,
-      bodyData
+      bodyData,
+      headers: {
+        'Authorization': `Bearer ${login}`,
+      }
     }
     toast.loading("Updating request status");
     await apiConnector(request);

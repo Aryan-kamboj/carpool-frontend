@@ -28,7 +28,7 @@ const login = localStorage.getItem("login")
 //        console.error(error);
 //     }
 // }
-export const loginApi = async ({email,password})=>{
+export const loginApi = async (email,password)=>{
     try {
         const bodyData={
             email:email,
@@ -42,11 +42,11 @@ export const loginApi = async ({email,password})=>{
         }
         toast.loading("Logining you in");
         const {data} = await apiConnector(request);
+        console.log(data)
         toast.dismiss();
         localStorage.removeItem("token");
         console.log(localStorage);
         localStorage.setItem("token",`${data.token}`)
-        store.dispatch(updateUserType(data.user))
         toast.success("User logged in");
         window.location.href="/";
         return data;
@@ -54,7 +54,6 @@ export const loginApi = async ({email,password})=>{
         console.log(error);
         toast.dismiss();
         toast.error(error.response.data.message);
-        updateUserType(null);
     }
 }
 export const signupApi = async (firstName,lastName,email,password)=>{
