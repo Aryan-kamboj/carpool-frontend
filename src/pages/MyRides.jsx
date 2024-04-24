@@ -4,7 +4,7 @@ import { myRidesApi } from '../services/auth/rideApis';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMyRides } from '../store/slices/dataSlice';
-import Cookies from 'js-cookie';
+// import Cookies from 's-cookie';
 export const MyRides = () => {
     const dispatcher = useDispatch();
     const data = useSelector((store)=>{

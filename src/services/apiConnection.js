@@ -1,6 +1,18 @@
 import axios from "axios";
-
+import { toast } from "react-hot-toast";
 const axiosInstance = axios.create({});
+axiosInstance.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    if (error.response.status === 401) {
+      console.log("DID WE RUN");
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+      toast.dismiss();
+      toast.error("Login expired please log in again");
+    }
+  }
+)
 export const apiConnector = ({
   method,
   url,
@@ -16,5 +28,5 @@ export const apiConnector = ({
     headers: headers ? headers : null,
     withCredentials: withCredentials ? true : false,
     params: params ? params : null,
-  });
+  })
 };
