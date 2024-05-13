@@ -19,9 +19,9 @@ function RequestItem({ setUserRideRequests, request }) {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     const request = await fetch(`${BASE_URL}/api/rides/cancel`, {
       method: "POST",
-      credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({ requestId })
     })
@@ -42,8 +42,8 @@ function RequestItem({ setUserRideRequests, request }) {
         <div>{request?.ride.host.lastName}</div>
       </div>
       <div className="flex gap-2">
-        <div className={`px-4 py-2 text-sm rounded-md ${colorMap[request.status]}`}>{request.status}</div>
-        <button onClick={(e) => handleCancelDelete(request._id)} className="bg-red-500 text-white px-4 py-2 rounded-md transition-all duration-300 active:scale-95 flex items-center gap-1">
+        <div className={`px-4 py-2 max-h-fit text-sm rounded-md ${colorMap[request.status]}`}>{request.status}</div>
+        <button onClick={(e) => handleCancelDelete(request._id)} className="bg-red-500 text-white px-4 py-2 max-h-fit rounded-md transition-all duration-300 active:scale-95 flex items-center gap-1">
           <div className="hidden sm:flex">
             <MdCancel />
           </div>
