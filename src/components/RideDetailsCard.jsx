@@ -40,7 +40,7 @@ export const RideDetailsCard = ({ride,setEdit}) => {
             <span>({totalRatings})</span>
         </div>}
         </div>
-        <button onClick={()=>{setEdit(true)}} className="rounded-lg border-white border-[1px]  py-2 duration-300 bg-[rgba(255,255,255,0.4)] hover:bg-[rgba(255,255,255,0.7)]">Edit Ride Details</button>
+        <button onClick={()=>{setEdit(true)}} className="rounded-lg border-white border-[1px]  py-2 duration-300 bg-[rgba(255,255,255,0.4)] hover:bg-[rgba(255,255,255,0.7)] hidden">Edit Ride Details</button>
     </div>
   )
 }
